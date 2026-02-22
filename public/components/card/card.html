@@ -1,0 +1,31 @@
+<section
+  class="card"
+  [ngClass]="['card--' + variant, 'card--' + layout, className || '' ]"
+>
+  @if (title || subtitle || true) {
+  <header class="card-header">
+    @if (title || subtitle) {
+    <div class="class-titles">
+      @if (title) {
+      <h3 class="card-title">{{title}}</h3>
+      } @if (subtitle) {
+      <p class="card-subtitle">{{subtitle}}</p>
+      }
+    </div>
+    }
+
+    <div class="card-actions">
+      <ng-content select="[cardActions]"></ng-content>
+    </div>
+  </header>
+  } @if (variant == 'Expense' || variant == 'Current-Balance'){
+  <app-divider type="minimal"></app-divider>
+  }
+  <div class="card-body">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="card-footer">
+    <ng-content select="[cardFooter]"></ng-content>
+  </div>
+</section>

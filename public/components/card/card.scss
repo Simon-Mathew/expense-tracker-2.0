@@ -1,0 +1,74 @@
+.card {
+  padding: 20px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-top: 20px;
+
+  // optional: background/border so it looks like a "card"
+  //   background: #fff;
+
+  //     display: flex;
+  //   align-items: center;
+  //   justify-content: space-between;
+  //   padding: 20px;
+  //   width: 100%;
+  //   height: 100%;
+  //   box-shadow: 0 4px 20px 10px rgba(0, 0, 0, 0.1);
+  //   margin-top: 20px;
+  //   border-radius: 10px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card__titles {
+  display: grid;
+  gap: 4px;
+}
+
+.card__title {
+  margin: 0;
+}
+
+.card__subtitle {
+  margin: 0;
+  opacity: 0.7;
+}
+
+.card__actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.card__body {
+  margin-top: 14px;
+}
+
+/* Layout variants */
+.card--row .card__body {
+  margin-top: 0; // header-style cards might not need body spacing
+}
+
+.card--stack .card__body {
+  margin-top: 14px;
+}
+
+/* Style variants (keep minimal — just small differences) */
+.card--income {
+  // e.g. border-left: 4px solid green;
+}
+
+.card--expense {
+  // e.g. border-left: 4px solid orange;
+}
+
+.card--transaction {
+  // e.g. border-left: 4px solid purple;
+}

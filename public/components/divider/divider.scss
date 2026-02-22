@@ -1,0 +1,21 @@
+.decorative-divider {
+  margin: 0 auto 20px;
+  text-align: center;
+  position: relative;
+  max-width: 40%;
+  color: black;
+}
+
+.decorative-divider:before,
+.decorative-divider:after {
+  width: 40%;
+  content: " ";
+  margin-top: 10px;
+  border: 1px solid currentColor;
+  float: right;
+}
+
+.minimal-divider {
+  border: 1px solid;
+  color: #dee2e6;
+}
