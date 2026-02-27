@@ -18,7 +18,9 @@
       <ng-content select="[cardActions]"></ng-content>
     </div>
   </header>
-  } @if (variant == 'Expense' || variant == 'Current-Balance'){
+  } @if (variant == 'expense' || variant == 'current-balance' || variant ==
+  'income'){
+  <ng-content select="value"><h1>{{this.variant}}</h1></ng-content>
   <app-divider type="minimal"></app-divider>
   }
   <div class="card-body">

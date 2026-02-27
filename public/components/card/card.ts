@@ -1,17 +1,19 @@
 import { Component, Input } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { Divider } from '../divider/divider';
+import { ɵEmptyOutletComponent } from '@angular/router';
 
 type CardVariant =
-  | 'Default-Header'
-  | 'Expense'
-  | 'Current-Balance'
-  | 'Transactions';
+  | 'default-header'
+  | 'income'
+  | 'expense'
+  | 'current-balance'
+  | 'transactions';
 type CardLayout = 'row' | 'stack';
 
 @Component({
   selector: 'app-card',
-  imports: [NgClass, Divider],
+  imports: [NgClass, Divider, ɵEmptyOutletComponent],
   templateUrl: './card.html',
   styleUrl: './card.scss',
   standalone: true,
@@ -20,7 +22,7 @@ export class Card {
   @Input() title?: string;
   @Input() subtitle?: string;
 
-  @Input() variant: CardVariant = 'Default-Header';
+  @Input() variant: CardVariant = 'default-header';
   @Input() layout: CardLayout = 'stack';
 
   @Input() className?: string;

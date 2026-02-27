@@ -1,26 +1,5 @@
-<!-- <div class="card Transaction">
-  <div class="logo">
-    <h2>Expense Tracker</h2>
-  </div>
-  <button class="btn">New Transaction</button>
-</div>
-
-<div>
-  <h1 class="Dashboad">Dashboard</h1>
-  <span class="badge">This month</span>
-  <span class="badge">AUD</span>
-</div>
-
-<div class="card Income">
-  <h3>Recent Income</h3>
-</div>
-
-<div class="card Expense">
-  <h3>Upcoming Expense</h3>
-</div> -->
-
 <app-card
-  variant="Default-Header"
+  variant="default-header"
   layout="row"
   title="Expense Tracker"
   className="Transaction"
@@ -41,5 +20,33 @@
 </div>
 <app-divider type="minimal"></app-divider>
 
-<!-- <app-card 
-variant="" -->
+<app-card
+  variant="income"
+  layout="row"
+  title="Income"
+  className="Latest-Income"
+  cardActions
+  value="income"
+>
+</app-card>
+
+<app-card
+  variant="expense"
+  layout="row"
+  title="Upcoming-Expense"
+  className="Upcoming-Expense"
+></app-card>
+
+<app-card
+  variant="current-balance"
+  layout="row"
+  title="Current-Balance"
+  className="current-balance"
+></app-card>
+
+<app-card
+  variant="transactions"
+  layout="stack"
+  title="Transactions-List"
+  className="transactions"
+></app-card>
