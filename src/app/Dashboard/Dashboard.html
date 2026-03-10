@@ -26,8 +26,10 @@
   title="Income"
   className="Latest-Income"
   cardActions
-  value="income"
 >
+  <div value>
+    <h1>{{format(income)}}</h1>
+  </div>
 </app-card>
 
 <app-card
@@ -35,14 +37,22 @@
   layout="row"
   title="Upcoming-Expense"
   className="Upcoming-Expense"
-></app-card>
+>
+  <div value>
+    <h1>{{format(expense)}}</h1>
+  </div>
+</app-card>
 
 <app-card
   variant="current-balance"
   layout="row"
   title="Current-Balance"
   className="current-balance"
-></app-card>
+>
+  <div value>
+    <h1>{{format(balance)}}</h1>
+  </div>
+</app-card>
 
 <app-card
   variant="transactions"

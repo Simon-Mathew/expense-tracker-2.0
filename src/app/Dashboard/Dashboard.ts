@@ -18,6 +18,16 @@ export class Dashboard {
       .reduce((a, b) => a + b.amount, 0);
   }
 
+  protected get expense(): number {
+    return this.info
+      .filter((t) => t.type === 'Expense')
+      .reduce((a, b) => a + b.amount, 0);
+  }
+
+  protected get balance(): number {
+    return this.income - this.expense;
+  }
+
   protected format(n: number): string {
     return n.toLocaleString(undefined, { style: 'currency', currency: 'AUD' });
   }

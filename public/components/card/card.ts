@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { Divider } from '../divider/divider';
-import { ɵEmptyOutletComponent } from '@angular/router';
 
 type CardVariant =
   | 'default-header'
@@ -13,7 +12,7 @@ type CardLayout = 'row' | 'stack';
 
 @Component({
   selector: 'app-card',
-  imports: [NgClass, Divider, ɵEmptyOutletComponent],
+  imports: [NgClass, Divider],
   templateUrl: './card.html',
   styleUrl: './card.scss',
   standalone: true,
