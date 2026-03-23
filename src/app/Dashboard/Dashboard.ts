@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { Card } from '../../../public/components/card/card';
 import { Divider } from '../../../public/components/divider/divider';
 import { MOCK_TRANSACTIONS } from '../../../public/assets/mock-data';
+import { RouterLink } from '@angular/router';
+import { Table } from '../../../public/components/table/table';
 
 @Component({
-  selector: 'app-header',
-  imports: [Card, Divider],
+  selector: 'app-dashboard',
+  imports: [Card, Divider, RouterLink, Table],
   templateUrl: './Dashboard.html',
-  styleUrl: './Dashboard.scss',
+  styleUrls: ['./Dashboard.scss'],
 })
 export class Dashboard {
   protected readonly info = MOCK_TRANSACTIONS;

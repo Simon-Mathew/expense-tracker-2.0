@@ -19,7 +19,7 @@
     </div>
   </header>
   } @if (variant == 'expense' || variant == 'current-balance' || variant ==
-  'income'){
+  'income' || variant == 'transactions'){
   <ng-content select="[value]"></ng-content>
   <app-divider type="minimal"></app-divider>
   }
