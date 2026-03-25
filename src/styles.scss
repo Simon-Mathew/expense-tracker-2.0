@@ -28,15 +28,15 @@ body {
   color-scheme: light;
   background-color: var(--mat-sys-surface);
   font: var(--mat-sys-body-medium);
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, "Helvetica Neue", "Arial", sans-serif;
 }
 
 .app-container {
   width: 100%;
   height: 100%;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 30px 30px 40px 30px;
+  // max-width: 960px;
+  // margin: 0 auto;
+  // padding: 30px 30px 40px 30px;
   height: 100%;
 }
 
@@ -44,4 +44,8 @@ body {
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+:root {
+  --sidenav-width: 300px;
 }
