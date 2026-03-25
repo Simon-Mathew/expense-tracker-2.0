@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SidenavLink } from '../sidenav-link/sidenav-link';
+import { SidenavService } from '../sidenav';
 
 @Component({
   selector: 'app-side-bar',
@@ -8,4 +9,6 @@ import { SidenavLink } from '../sidenav-link/sidenav-link';
   styleUrls: ['./sidenav.scss'],
   standalone: true,
 })
-export class Sidenav {}
+export class Sidenav {
+  constructor(public sidenavService: SidenavService) {}
+}
