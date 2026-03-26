@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { SidenavLink } from '../sidenav-link/sidenav-link';
 import { SidenavService } from '../sidenav';
+import { Dashboard } from '../Dashboard/Dashboard';
 
 @Component({
   selector: 'app-side-bar',
-  imports: [SidenavLink],
+  imports: [SidenavLink, Dashboard],
   templateUrl: './sidenav.html',
   styleUrls: ['./sidenav.scss'],
   standalone: true,
