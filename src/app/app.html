@@ -1,1 +1,10 @@
-<app-header />
+<div class="app-container">
+  <!-- sidenav placeholder -->
+  <app-side-bar [class.is-expanded]="sidenavService.isExpanded"></app-side-bar>
+
+  <main class="main">
+    <div class="content-inner">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,18 @@
+<div class="side-bar-left">
+  <div class="sidenav-body-container sidenav-body">
+    <h1>Expense</h1>
+
+    <app-sidenav-link routerLink="/Dashboard">
+      <span icon>🏠</span>
+
+      <span>Dashboard</span>
+    </app-sidenav-link>
+  </div>
+  <button
+    class="toggle-button"
+    (click)="sidenavService.toggleSidenav()"
+    [class.is-flipped]="sidenavService.isExpanded"
+  >
+    <mat-icon icon>chevron_right</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,7 @@
+@if (type == 'decorative') {
+<div class="decorative-divider" [ngStyle]="{'max-width' : maxWidth ?? null}">
+  {{symbol}}
+</div>
+} @if (type == 'minimal') {
+<hr class="minimal-divider" />
+}

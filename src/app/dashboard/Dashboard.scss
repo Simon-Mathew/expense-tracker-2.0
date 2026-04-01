@@ -1,0 +1,37 @@
+h2 {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+.container {
+  display: grid;
+  width: auto;
+  margin: 0 auto;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 1fr));
+}
+
+.badge {
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #f9fafb;
+  // color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.Dashboard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 20px;
+}
+
+// #wrapper {
+//   width: 90%;
+// }

@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="Dashboard">
+    <div>
+      <h1 class="Dashboard-heading">Dashboard</h1>
+    </div>
+    <div>
+      <span class="badge">This month</span>
+      <span class="badge">AUD</span>
+    </div>
+  </div>
+  <app-divider type="minimal"></app-divider>
+
+  <app-card
+    variant="default-header"
+    layout="row"
+    title="Expense Tracker"
+    className="Transaction"
+  >
+    <div cardActions>
+      <button class="btn" routerLink="/New-Transaction-Form">
+        New Transaction
+      </button>
+    </div>
+  </app-card>
+
+  <app-card
+    variant="income"
+    layout="row"
+    title="Income"
+    className="Latest-Income"
+    cardActions
+  >
+    <div value>
+      <h2>{{format(income)}}</h2>
+    </div>
+  </app-card>
+
+  <app-card
+    variant="expense"
+    layout="row"
+    title="Upcoming-Expense"
+    className="Upcoming-Expense"
+  >
+    <div value>
+      <h2>{{format(expense)}}</h2>
+    </div>
+  </app-card>
+
+  <app-card
+    variant="current-balance"
+    layout="row"
+    title="Current-Balance"
+    className="current-balance"
+  >
+    <div value>
+      <h2>{{format(balance )}}</h2>
+    </div>
+  </app-card>
+
+  <app-card
+    variant="transactions"
+    layout="stack"
+    title="Transactions-List"
+    className="transactions"
+  >
+    <app-table />
+  </app-card>
+</div>
