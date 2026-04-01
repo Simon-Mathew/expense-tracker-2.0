@@ -4,10 +4,11 @@ import { Divider } from '../../../public/components/divider/divider';
 import { MOCK_TRANSACTIONS } from '../../../public/assets/mock-data';
 import { RouterLink } from '@angular/router';
 import { Table } from '../../../public/components/table/table';
+import { NewTransactionForm } from '../new-transaction-form/new-transaction-form';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [Card, Divider, RouterLink, Table],
+  imports: [Card, Divider, RouterLink, Table, NewTransactionForm],
   templateUrl: './Dashboard.html',
   styleUrls: ['./Dashboard.scss'],
 })

@@ -1,6 +1,5 @@
 .example-container {
   height: 400px;
-  // width: 550px;
   max-width: 100%;
   overflow: auto;
 }
@@ -27,8 +26,26 @@ td.mat-column-position {
   border-right: 1px solid #e0e0e0;
 }
 
-@media (max-width: 600px) {
+// @media (max-width: 992px) {
+//   .example-container {
+//     width: 500px;
+//   }
+// }
+
+@media (max-width: 768px) {
   .example-container {
     width: 500px;
+  }
+}
+
+@media (max-width: 660px) {
+  .example-container {
+    width: 450px;
+  }
+}
+
+@media (max-width: 600px) {
+  .example-container {
+    width: 390px;
   }
 }

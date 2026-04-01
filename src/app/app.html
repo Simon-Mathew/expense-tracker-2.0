@@ -1,8 +1,10 @@
 <div class="app-container">
   <!-- sidenav placeholder -->
+  <app-side-bar [class.is-expanded]="sidenavService.isExpanded"></app-side-bar>
 
-  <app-side-bar />
-  <div class="content">
-    <router-outlet></router-outlet>
-  </div>
+  <main class="main">
+    <div class="content-inner">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
 </div>

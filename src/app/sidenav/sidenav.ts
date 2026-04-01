@@ -1,15 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { SidenavLink } from '../sidenav-link/sidenav-link';
-import { SidenavService } from '../sidenav';
-import { Dashboard } from '../Dashboard/Dashboard';
+import { SidenavService } from '../sidenavService';
+import { Dashboard } from '../dashboard/Dashboard';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-side-bar',
-  imports: [SidenavLink, Dashboard],
+  imports: [SidenavLink, Dashboard, MatIcon],
   templateUrl: './sidenav.html',
   styleUrls: ['./sidenav.scss'],
   standalone: true,
 })
 export class Sidenav {
   constructor(public sidenavService: SidenavService) {}
+
+  @HostBinding('class.is-expanded')
+  get isExpanded() {
+    return this.sidenavService.isExpanded;
+  }
 }

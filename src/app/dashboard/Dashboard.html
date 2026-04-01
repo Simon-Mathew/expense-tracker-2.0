@@ -1,15 +1,4 @@
 <div class="container">
-  <app-card
-    variant="default-header"
-    layout="row"
-    title="Expense Tracker"
-    className="Transaction"
-  >
-    <div cardActions>
-      <button class="btn">New Transaction</button>
-    </div>
-  </app-card>
-
   <div class="Dashboard">
     <div>
       <h1 class="Dashboard-heading">Dashboard</h1>
@@ -20,6 +9,19 @@
     </div>
   </div>
   <app-divider type="minimal"></app-divider>
+
+  <app-card
+    variant="default-header"
+    layout="row"
+    title="Expense Tracker"
+    className="Transaction"
+  >
+    <div cardActions>
+      <button class="btn" routerLink="/New-Transaction-Form">
+        New Transaction
+      </button>
+    </div>
+  </app-card>
 
   <app-card
     variant="income"

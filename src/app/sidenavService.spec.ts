@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SidenavService } from './sidenav';
+import { SidenavService } from './sidenavService';
 
 describe('Sidenav', () => {
   let service: SidenavService;
