@@ -1,4 +1,49 @@
-<h1>Log New Transaction</h1>
-<p>Record a financial entry to keep your wealth architecture precise.</p>
+<h1 class="page-title">Log New Transaction</h1>
+<p class="page-description">Enter the transaction information to save it.</p>
 
-<div class="New-Transaction"></div>
+<div class="new-transaction">
+  <form class="transaction-form">
+    <div class="form-control">
+      <label for="amount" class="amount-label">AMOUNT</label>
+      <input type="number" class="large-input" id="amount" name="amount" />
+    </div>
+
+    <div class="form-row">
+      <div class="form-control half-width">
+        <label for="transaction-list">TRANSACTION TYPE</label>
+        <select class="input" id="transaction-list" name="transaction-list">
+          <option>Income</option>
+          <option>Expense</option>
+        </select>
+      </div>
+
+      <div class="form-control half-width">
+        <label for="date">DATE</label>
+        <input type="date" class="date-input" id="date" name="date" />
+      </div>
+    </div>
+
+    <div class="form-control">
+      <label for="category">CATEGORY</label>
+      <select type="list" class="input" id="category" name="category">
+        <option>Rent</option>
+        <option>Dinning Out</option>
+      </select>
+    </div>
+
+    <div class="form-control">
+      <label for="notes">NOTES/DESCRIPTION</label>
+      <textarea
+        type="textarea"
+        class="large-input"
+        id="notes"
+        name="notes"
+      ></textarea>
+    </div>
+
+    <div class="form-action">
+      <button type="submit" class="submit">Record Transaction</button>
+      <button type="button" class="cancel">Cancel</button>
+    </div>
+  </form>
+</div>

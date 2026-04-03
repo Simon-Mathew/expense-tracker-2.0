@@ -1,0 +1,110 @@
+// Whole page
+.new-transaction {
+  background-color: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 24px;
+  border: 1px solid #eceff5;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+}
+
+.page-description {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #6b7280;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.form-control label {
+  font-family: sans-serif;
+  //   font-weight: 300;
+  color: #64748b;
+  padding-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.form-control input {
+  border-radius: 10px;
+  background-color: #f1f2fa;
+  box-sizing: border-box;
+}
+
+.large-input {
+  padding: 20px 10px;
+  margin-bottom: 10px;
+}
+
+.date-input {
+  padding: 15px 5px;
+}
+
+.form-control select {
+  border-radius: 10px;
+  padding: 15px 5px;
+  background-color: #f1f2fa;
+  box-sizing: border-box;
+}
+
+.form-control textarea {
+  border-radius: 10px;
+  padding: 15px 5px;
+  background-color: #f1f2fa;
+  box-sizing: border-box;
+}
+
+.page-title {
+  margin-bottom: 0.5rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.half-width {
+  width: 50%;
+}
+
+.amount-input {
+  padding-bottom: 10px;
+  padding: 10px 10px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #f1f2fa;
+  border: 1px solid;
+}
+
+.form-action {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.submit {
+  //   height: 40px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: large;
+  width: 60%;
+}
+
+.cancel {
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: large;
+  width: 40%;
+  background-color: #f1f2fa;
+}

@@ -14,6 +14,5 @@ import { Card } from '../../public/components/card/card';
 export class App {
   protected title = 'expense-tracker-2.0';
 
-  // sidenavService = inject(SidenavService);
   constructor(public sidenavService: SidenavService) {}
 }

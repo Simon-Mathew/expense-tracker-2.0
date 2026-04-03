@@ -27,7 +27,9 @@ body {
 body {
   color-scheme: light;
   // background-color: var(--mat-sys-surface);
-  background-color: #f5f6fc;
+  max-width: 950px;
+  margin: 0 auto;
+  background-color: #f1f2fa;
   font: var(--mat-sys-body-medium);
   font-family: Roboto, "Helvetica Neue", "Arial", sans-serif;
 }
