@@ -5,13 +5,22 @@
   <form class="transaction-form">
     <div class="form-control">
       <label for="amount" class="amount-label">AMOUNT</label>
-      <input type="number" class="large-input" id="amount" name="amount" />
+      <input
+        type="number"
+        class="form-field form-field-tall"
+        id="amount"
+        name="amount"
+      />
     </div>
 
     <div class="form-row">
       <div class="form-control half-width">
         <label for="transaction-list">TRANSACTION TYPE</label>
-        <select class="input" id="transaction-list" name="transaction-list">
+        <select
+          class="form-field input"
+          id="transaction-list"
+          name="transaction-list"
+        >
           <option>Income</option>
           <option>Expense</option>
         </select>
@@ -19,13 +28,18 @@
 
       <div class="form-control half-width">
         <label for="date">DATE</label>
-        <input type="date" class="date-input" id="date" name="date" />
+        <input
+          type="date"
+          class="form-field date-input"
+          id="date"
+          name="date"
+        />
       </div>
     </div>
 
     <div class="form-control">
       <label for="category">CATEGORY</label>
-      <select type="list" class="input" id="category" name="category">
+      <select class="form-field input" id="category" name="category">
         <option>Rent</option>
         <option>Dinning Out</option>
       </select>
@@ -34,8 +48,7 @@
     <div class="form-control">
       <label for="notes">NOTES/DESCRIPTION</label>
       <textarea
-        type="textarea"
-        class="large-input"
+        class="form-field form-field-tall"
         id="notes"
         name="notes"
       ></textarea>
