@@ -1,0 +1,20 @@
+<section class="card">
+  @if (title) {
+  <strong>CATEGORY</strong>
+  <h2>{{title}}</h2>
+  <app-divider type="minimal"></app-divider>
+  <div class="spent-amount">
+    <p>Spent</p>
+    <ng-content select="[amount]"></ng-content>
+  </div>
+  <div class="spending-limit">
+    <p>Limit</p>
+    <ng-content select="[limit]"></ng-content>
+  </div>
+
+  <div class="balance-amount">
+    <p>Remaining</p>
+    <ng-content select="[balance]"></ng-content>
+  </div>
+  }
+</section>
