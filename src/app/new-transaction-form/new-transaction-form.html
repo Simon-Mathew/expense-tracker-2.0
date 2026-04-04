@@ -40,8 +40,10 @@
     <div class="form-control">
       <label for="category">CATEGORY</label>
       <select class="form-field input" id="category" name="category">
-        <option>Rent</option>
-        <option>Dinning Out</option>
+        <!-- The $index is used to get each item off the list -->
+        @for(list of category; track $index) {
+        <option>{{list}}</option>
+        }
       </select>
     </div>
 

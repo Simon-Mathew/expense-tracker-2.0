@@ -7,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrl: './new-transaction-form.scss',
 })
 export class NewTransactionForm {
-
+  category = [
+    'Insurance',
+    'Rent',
+    'Food',
+    'Fuel',
+    'House Bills',
+    'Creams For Medication',
+    'Subscriptions',
+    'Dinning Out',
+    'Other',
+  ];
 }
