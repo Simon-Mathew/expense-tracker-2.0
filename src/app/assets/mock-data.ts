@@ -37,7 +37,7 @@ export const MOCK_TRANSACTIONS: transactions[] = [
     merchant: 'Uber',
     category: 'Transport',
     type: 'Expense',
-    amount: 18.2,
+    amount: 150,
   },
   {
     id: 'tx_1003',
@@ -45,7 +45,7 @@ export const MOCK_TRANSACTIONS: transactions[] = [
     merchant: 'Brisbane Capital',
     category: 'Salary',
     type: 'Income',
-    amount: 1250.0,
+    amount: 3000,
     note: 'Internship pay',
   },
   {
