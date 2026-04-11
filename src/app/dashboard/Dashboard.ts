@@ -6,6 +6,7 @@ import { RouterLink } from '@angular/router';
 import { Table } from '../shared/components/table/table';
 import { NewTransactionForm } from '../new-transaction-form/new-transaction-form';
 import { Budgets } from '../budgets/budgets';
+import { Budgeting } from '../budgeting';
 
 @Component({
   selector: 'app-dashboard',

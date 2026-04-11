@@ -23,7 +23,7 @@ export const categories = [
 
 export const MOCK_TRANSACTIONS: transactions[] = [
   {
-    id: 'tx_1001',
+    id: '1',
     date: '2026-02-11',
     merchant: 'Woolworths',
     category: 'Groceries',
@@ -32,7 +32,7 @@ export const MOCK_TRANSACTIONS: transactions[] = [
     note: 'Weekly shop',
   },
   {
-    id: 'tx_1002',
+    id: '2',
     date: '2026-02-10',
     merchant: 'Uber',
     category: 'Transport',
@@ -40,7 +40,7 @@ export const MOCK_TRANSACTIONS: transactions[] = [
     amount: 150,
   },
   {
-    id: 'tx_1003',
+    id: '3',
     date: '2026-02-10',
     merchant: 'Brisbane Capital',
     category: 'Salary',
@@ -49,7 +49,16 @@ export const MOCK_TRANSACTIONS: transactions[] = [
     note: 'Internship pay',
   },
   {
-    id: 'tx_1004',
+    id: '4',
+    date: '2025-02-10',
+    merchant: 'Brisbane Capital',
+    category: 'Salary',
+    type: 'Income',
+    amount: 1000,
+    note: 'Internship pay',
+  },
+  {
+    id: '5',
     date: '2026-02-09',
     merchant: 'Rent',
     category: 'Rent',
@@ -57,7 +66,7 @@ export const MOCK_TRANSACTIONS: transactions[] = [
     amount: 520.0,
   },
   {
-    id: 'tx_1005',
+    id: '6',
     date: '2026-02-08',
     merchant: 'Netflix',
     category: 'Entertainment',
@@ -65,7 +74,7 @@ export const MOCK_TRANSACTIONS: transactions[] = [
     amount: 16.99,
   },
   {
-    id: 'tx_1006',
+    id: '7',
     date: '2026-02-07',
     merchant: "Nando's",
     category: 'Dining',
