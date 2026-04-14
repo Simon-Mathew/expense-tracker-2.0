@@ -1,7 +1,14 @@
 <section class="card">
   @if (title) {
-  <h3>Category</h3>
-  <h1>{{title}}</h1>
+  <div class="card-header">
+    <div>
+      <h3>Category</h3>
+      <h1>{{title}}</h1>
+    </div>
+
+    <div class="percentage">{{progress}} %</div>
+  </div>
+
   <app-divider type="minimal"></app-divider>
   <div class="spent-amount end-to-end">
     <p class="shrink">Spent</p>
