@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BudgetsCards } from '../shared/components/budgets-cards/budgets-cards';
-import { MOCK_TRANSACTIONS } from '../assets/mock-data';
+import { MOCK_TRANSACTIONS, transactions } from '../assets/mock-data';
 import { Budgeting } from '../budgeting';
 
 @Component({
@@ -20,6 +20,11 @@ export class Budgets {
     Transport: 250,
   };
 
+  rentSpent = 0;
+  groceriesSpent = 0;
+  diningSpent = 0;
+  transportSpent = 0;
+
   //  Using this constructor to get the Budget date cycle running
   constructor(private budgeting: Budgeting) {
     console.log(this.budgeting.getLatestIncomeDate());
@@ -32,6 +37,19 @@ export class Budgets {
       const fortnightBudget = latestIncome + 13 * 24 * 60 * 60 * 1000;
       const fortnightDate = new Date(fortnightBudget);
       console.log('End of cycle', fortnightDate);
+
+      console.log('Start of cycle', latest?.date);
+      console.log('End of cycle', fortnightDate);
+
+      this.rentSpent = this.budgeting.getCategorySpent('Rent');
+      this.groceriesSpent = this.budgeting.getCategorySpent('Groceries');
+      this.diningSpent = this.budgeting.getCategorySpent('Dining');
+      this.transportSpent = this.budgeting.getCategorySpent('Transport');
+
+      console.log('Rent:', this.rentSpent);
+      console.log('Groceries:', this.groceriesSpent);
+      console.log('Dining:', this.diningSpent);
+      console.log('Transport:', this.transportSpent);
     } else {
       console.log('No income yet');
     }

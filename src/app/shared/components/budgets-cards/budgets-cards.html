@@ -1,27 +1,26 @@
 <section class="card">
   @if (title) {
-  <strong>CATEGORY</strong>
-  <h2>{{title}}</h2>
+  <h3>Category</h3>
+  <h1>{{title}}</h1>
   <app-divider type="minimal"></app-divider>
-  <div class="spent-amount">
-    <p>Spent</p>
-    <ng-content select="[amount]"></ng-content>
+  <div class="spent-amount end-to-end">
+    <p class="shrink">Spent</p>
+    <p class="input">$ {{value}}</p>
   </div>
-  <div class="spending-limit">
-    <p>Limit</p>
-    <ng-content select="[limit]"></ng-content>
+  <div class="spending-limit end-to-end">
+    <p class="shrink">Limit</p>
+    <p class="input">$ {{limit}}</p>
   </div>
 
   <!-- Progress Bar -->
-  <div class="progress-div">
-    <div class="progress-bar"></div>
-    <div class="label"></div>
+  <div class="progress">
+    <div class="fill" [style.width.%]="progress"></div>
   </div>
   <!--  -->
 
-  <div class="balance-amount">
-    <p>Remaining</p>
-    <ng-content select="[balance]"></ng-content>
+  <div class="balance-amount end-to-end">
+    <p class="shrink">Remaining</p>
+    <p class="input">{{limit-value}}</p>
   </div>
   }
 </section>

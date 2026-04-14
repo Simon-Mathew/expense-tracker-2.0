@@ -14,7 +14,7 @@ export const categories = [
   'Groceries',
   'Health',
   'Transport',
-  'Dinning',
+  'Dining',
   'Bills',
   'Shopping',
   'Entertainment',
@@ -24,7 +24,7 @@ export const categories = [
 export const MOCK_TRANSACTIONS: transactions[] = [
   {
     id: '1',
-    date: '2026-02-11',
+    date: '2026-04-11',
     merchant: 'Woolworths',
     category: 'Groceries',
     type: 'Expense',
@@ -33,7 +33,7 @@ export const MOCK_TRANSACTIONS: transactions[] = [
   },
   {
     id: '2',
-    date: '2026-02-10',
+    date: '2026-04-10',
     merchant: 'Uber',
     category: 'Transport',
     type: 'Expense',
@@ -41,7 +41,7 @@ export const MOCK_TRANSACTIONS: transactions[] = [
   },
   {
     id: '3',
-    date: '2026-02-10',
+    date: '2026-04-03',
     merchant: 'Brisbane Capital',
     category: 'Salary',
     type: 'Income',
@@ -50,7 +50,7 @@ export const MOCK_TRANSACTIONS: transactions[] = [
   },
   {
     id: '4',
-    date: '2025-02-10',
+    date: '2025-04-10',
     merchant: 'Brisbane Capital',
     category: 'Salary',
     type: 'Income',
@@ -59,15 +59,15 @@ export const MOCK_TRANSACTIONS: transactions[] = [
   },
   {
     id: '5',
-    date: '2026-02-09',
+    date: '2026-04-09',
     merchant: 'Rent',
     category: 'Rent',
     type: 'Expense',
-    amount: 520.0,
+    amount: 400.0,
   },
   {
     id: '6',
-    date: '2026-02-08',
+    date: '2026-04-08',
     merchant: 'Netflix',
     category: 'Entertainment',
     type: 'Expense',
@@ -75,7 +75,7 @@ export const MOCK_TRANSACTIONS: transactions[] = [
   },
   {
     id: '7',
-    date: '2026-02-07',
+    date: '2026-04-07',
     merchant: "Nando's",
     category: 'Dining',
     type: 'Expense',

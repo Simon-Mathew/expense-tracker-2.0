@@ -9,4 +9,12 @@ import { Divider } from '../divider/divider';
 })
 export class BudgetsCards {
   @Input() title?: string;
+  @Input() value: number = 0;
+  @Input() limit: number = 0;
+  @Input() balance: number = 0;
+
+  get progress() {
+    if (!this.limit || this.limit === 0) return 0;
+    return (this.value / this.limit) * 100;
+  }
 }

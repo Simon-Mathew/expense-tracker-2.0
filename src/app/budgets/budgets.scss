@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.badge {
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #36353b;
+  background: #f9fafb;
+  // color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
