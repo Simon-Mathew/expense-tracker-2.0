@@ -1,0 +1,101 @@
+section {
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.05rem;
+}
+
+h3 {
+  margin: 0;
+  margin-bottom: 5px;
+  font-weight: 300;
+}
+p {
+  font-family: sans-serif;
+  color: #555e6b;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.03rem;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.percentage {
+  padding: 6px 10px;
+  border: 1px solid #b6b6b6;
+  background-color: #f1f2fa;
+  font-size: 0.8rem;
+  border-radius: 15px;
+  font-weight: 500;
+  letter-spacing: 0.05rem;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.progress-div {
+  position: relative;
+  width: 450px;
+  background-color: #b6b6b6;
+  border-radius: 30px;
+}
+
+.progress-bar {
+  height: 25px;
+  background-color: green;
+  border-radius: 30px;
+  transition: 0.5s linear;
+  transition-property: width, background-color;
+  animation: progress 5s forwards;
+}
+
+.end-to-end {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.balance-amount,
+.spent-amount,
+.spending-limit {
+  margin: 10px 0;
+}
+
+.shrink {
+  margin: 0;
+}
+
+.input {
+  color: black;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+// Progress bar
+.progress {
+  height: 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+.fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(43, 255, 0, 0.65),
+    rgba(255, 0, 0, 0.55)
+  );
+}

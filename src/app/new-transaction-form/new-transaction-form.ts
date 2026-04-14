@@ -10,12 +10,13 @@ export class NewTransactionForm {
   category = [
     'Insurance',
     'Rent',
-    'Food',
+    'Groceries',
     'Fuel',
     'House Bills',
     'Creams For Medication',
     'Subscriptions',
     'Dinning Out',
+    'Credit Card Bills',
     'Other',
   ];
 }

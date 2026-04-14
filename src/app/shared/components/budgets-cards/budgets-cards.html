@@ -1,0 +1,33 @@
+<section class="card">
+  @if (title) {
+  <div class="card-header">
+    <div>
+      <h3>Category</h3>
+      <h1>{{title}}</h1>
+    </div>
+
+    <div class="percentage">{{progress}} %</div>
+  </div>
+
+  <app-divider type="minimal"></app-divider>
+  <div class="spent-amount end-to-end">
+    <p class="shrink">Spent</p>
+    <p class="input">$ {{value}}</p>
+  </div>
+  <div class="spending-limit end-to-end">
+    <p class="shrink">Limit</p>
+    <p class="input">$ {{limit}}</p>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress">
+    <div class="fill" [style.width.%]="progress"></div>
+  </div>
+  <!--  -->
+
+  <div class="balance-amount end-to-end">
+    <p class="shrink">Remaining</p>
+    <p class="input">{{limit-value}}</p>
+  </div>
+  }
+</section>

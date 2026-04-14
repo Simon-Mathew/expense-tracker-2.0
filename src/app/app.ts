@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { Dashboard } from './dashboard/Dashboard';
 import { Sidenav } from './sidenav/sidenav';
 import { SidenavService } from './sidenavService';
-import { Card } from '../../public/components/card/card';
+import { Card } from '../../src/app/shared/components/card/card';
 
 @Component({
   selector: 'app-root',
