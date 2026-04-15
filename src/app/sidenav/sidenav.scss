@@ -68,7 +68,7 @@
     pointer-events: none;
   }
 
-  .sidebar-panel {
+  .sidebar {
     width: 280px;
     max-width: 85vw;
     height: 100vh;
@@ -78,7 +78,7 @@
     pointer-events: auto;
   }
 
-  .sidebar-panel.mobile-open {
+  .sidebar.mobile-open {
     transform: translateX(0);
   }
 }

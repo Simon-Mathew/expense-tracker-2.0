@@ -70,6 +70,7 @@
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  fill: #2452e7;
 }
 
 .menu-toggle:hover {
@@ -87,10 +88,9 @@
 
 .main {
   flex: 1;
-  min-width: none;
+  min-width: 0;
   padding: 1.5rem;
-  min-width: 100%;
-  margin: 0 auto;
+  // margin: 0 auto;
 }
 
 .content-inner {
@@ -101,10 +101,6 @@
 @media (max-width: 992px) {
   .app-shell {
     grid-template-columns: 1fr;
-  }
-
-  .sidebar {
-    display: none;
   }
 
   .menu-toggle {

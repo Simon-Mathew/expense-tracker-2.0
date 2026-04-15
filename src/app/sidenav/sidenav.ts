@@ -1,12 +1,10 @@
 import { Component, HostBinding } from '@angular/core';
 import { SidenavLink } from '../sidenav-link/sidenav-link';
 import { SidenavService } from '../sidenavService';
-import { Dashboard } from '../dashboard/Dashboard';
-import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-side-bar',
-  imports: [SidenavLink, Dashboard, MatIcon],
+  imports: [SidenavLink],
   templateUrl: './sidenav.html',
   styleUrls: ['./sidenav.scss'],
   standalone: true,
