@@ -1,18 +1,38 @@
-<div class="side-bar-left">
-  <div class="sidenav-body-container sidenav-body">
-    <h1>Expense</h1>
+<aside class="sidebar" [class.mobile-open]="sidenavService.isExpanded">
+  <div class="brand">
+    <img class="brand-mark" src="images/expense-logo.webp" />
+    <div class="brand-text">
+      <h1>Expense</h1>
+      <p>Personal Finance</p>
+    </div>
+  </div>
 
-    <app-sidenav-link routerLink="/Dashboard">
+  <nav class="nav-group">
+    <app-sidenav-link routerLink="/dashboard">
       <span icon>🏠</span>
+      Dashboard
+    </app-sidenav-link>
 
-      <span>Dashboard</span>
+    <app-sidenav-link routerLink="/Transactions">
+      <span icon>💳</span>
+      Transactions
+    </app-sidenav-link>
+
+    <app-sidenav-link routerLink="/budgets">
+      <span icon>📊</span>
+      Budgets
+    </app-sidenav-link>
+  </nav>
+
+  <div class="nav-footer">
+    <app-sidenav-link routerLink="/Settings">
+      <span icon>⚙️</span>
+      Settings
+    </app-sidenav-link>
+
+    <app-sidenav-link routerLink="/Support">
+      <span icon>❓</span>
+      Support
     </app-sidenav-link>
   </div>
-  <button
-    class="toggle-button"
-    (click)="sidenavService.toggleSidenav()"
-    [class.is-flipped]="sidenavService.isExpanded"
-  >
-    <mat-icon icon>chevron_right</mat-icon>
-  </button>
-</div>
+</aside>

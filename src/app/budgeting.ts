@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MOCK_TRANSACTIONS, transactions } from './assets/mock-data';
+import { MOCK_TRANSACTIONS, transactions } from '../../public/assets/mock-data';
 
 @Injectable({
   providedIn: 'root',

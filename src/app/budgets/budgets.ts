@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { BudgetsCards } from '../shared/components/budgets-cards/budgets-cards';
-import { MOCK_TRANSACTIONS, transactions } from '../assets/mock-data';
+import {
+  MOCK_TRANSACTIONS,
+  transactions,
+} from '../../../public/assets/mock-data';
 import { Budgeting } from '../budgeting';
 
 @Component({

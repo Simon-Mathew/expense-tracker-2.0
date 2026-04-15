@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-import { MOCK_TRANSACTIONS } from '../../../assets/mock-data';
+import { MOCK_TRANSACTIONS } from '../../../../../public/assets/mock-data';
 import { MatIconModule } from '@angular/material/icon';
 
 export interface PeriodicElement {
