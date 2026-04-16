@@ -27,7 +27,7 @@ h1 {
 .Dashboard {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   padding: 0 20px;
 }
 
@@ -41,4 +41,14 @@ h1 {
   cursor: pointer;
   font-weight: 700;
   font-size: large;
+}
+
+.page-shell,
+.main,
+.content-inner,
+.container,
+.transactions,
+.card,
+.card-body {
+  min-width: 0;
 }

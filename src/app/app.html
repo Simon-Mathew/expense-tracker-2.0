@@ -1,10 +1,46 @@
-<div class="app-container">
-  <!-- sidenav placeholder -->
-  <!-- <app-side-bar [class.is-expanded]="sidenavService.isExpanded"></app-side-bar> -->
+<div class="app-shell">
+  <app-side-bar class="sidebar"></app-side-bar>
+  <div
+    class="mobile-overlay"
+    [class.show]="sidenavService.isExpanded"
+    (click)="sidenavService.collapseSidenav()"
+  ></div>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button
+          class="menu-toggle"
+          type="button"
+          (click)="sidenavService.toggleSidenav()"
+          aria-label="Open menu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="100"
+            height="100"
+            viewBox="0 0 48 48"
+          >
+            <path
+              fill="#607D8B"
+              d="M6 22H42V26H6zM6 10H42V14H6zM6 34H42V38H6z"
+            ></path>
+          </svg>
+        </button>
+        <h2 class="topbar-header">Expense Tracker</h2>
+      </div>
 
-  <main class="main">
-    <div class="content-inner">
-      <router-outlet></router-outlet>
-    </div>
-  </main>
+      <div class="topbar-right">
+        <button class="icon-btn">🔔</button>
+        <div class="avatar">S</div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="content-inner">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
 </div>

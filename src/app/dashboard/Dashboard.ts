@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Card } from '../shared/components/card/card';
 import { Divider } from '../shared/components/divider/divider';
-import { MOCK_TRANSACTIONS } from '../assets/mock-data';
+import { MOCK_TRANSACTIONS } from '../../../public/assets/mock-data';
 import { RouterLink } from '@angular/router';
 import { Table } from '../shared/components/table/table';
 import { NewTransactionForm } from '../new-transaction-form/new-transaction-form';
