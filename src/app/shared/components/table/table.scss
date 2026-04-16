@@ -1,11 +1,14 @@
 .example-container {
   height: 400px;
   max-width: 100%;
-  overflow: auto;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 table {
-  // width: auto;
+  width: 100%;
+  // min-width: 100%;
+  // white-space: nowrap;
 }
 
 td.mat-column-star {
@@ -30,22 +33,28 @@ td.mat-column-position {
 //   .example-container {
 //     width: 500px;
 //   }
+// // }
+
+// @media (max-width: 768px) {
+//   .example-container {
+//     width: 500px;
+//   }
 // }
 
-@media (max-width: 768px) {
-  .example-container {
-    width: 500px;
-  }
-}
+// @media (max-width: 660px) {
+//   .example-container {
+//     width: 450px;
+//   }
+// }
 
-@media (max-width: 660px) {
-  .example-container {
-    width: 450px;
-  }
-}
+// @media (max-width: 600px) {
+//   .example-container {
+//     width: 390px;
+//   }
+// }
 
-@media (max-width: 600px) {
-  .example-container {
-    width: 390px;
-  }
-}
+// @media (max-width: 500px) {
+//   .example-container {
+//     width: 350px;
+//   }
+// }

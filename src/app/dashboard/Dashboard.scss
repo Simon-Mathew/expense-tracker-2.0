@@ -42,3 +42,13 @@ h1 {
   font-weight: 700;
   font-size: large;
 }
+
+.page-shell,
+.main,
+.content-inner,
+.container,
+.transactions,
+.card,
+.card-body {
+  min-width: 0;
+}

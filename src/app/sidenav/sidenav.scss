@@ -10,14 +10,18 @@
   padding: 1.25rem 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  // gap: 1rem;
+}
+
+.divider {
+  margin-bottom: 20px;
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  padding: 0.5rem 0.5rem 1rem;
+  padding: 0.5rem 0 0.5rem 1rem;
 }
 
 .brand-mark {

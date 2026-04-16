@@ -30,4 +30,29 @@ export class Table {
     'amount',
   ];
   dataSource = this.data;
+
+  ngOnInit() {
+    this.updateColumns(window.innerWidth);
+
+    window.addEventListener('resize', () => {
+      this.updateColumns(window.innerWidth);
+    });
+  }
+
+  updateColumns(width: number) {
+    if (width <= 600) {
+      this.displayedColumns = ['date', 'amount', 'merchant'];
+    } else if (width <= 768) {
+      this.displayedColumns = ['date', 'amount', 'merchant', 'category'];
+    } else {
+      this.displayedColumns = [
+        'id',
+        'date',
+        'merchant',
+        'category',
+        'type',
+        'amount',
+      ];
+    }
+  }
 }
