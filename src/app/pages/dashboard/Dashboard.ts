@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Card } from '../shared/components/card/card';
-import { Divider } from '../shared/components/divider/divider';
-import { MOCK_TRANSACTIONS } from '../../../public/assets/mock-data';
+import { Card } from '../../shared/components/card/card';
+import { Divider } from '../../shared/components/divider/divider';
+import { MOCK_TRANSACTIONS } from '../../../../public/assets/mock-data';
 import { RouterLink } from '@angular/router';
-import { Table } from '../shared/components/table/table';
+import { Table } from '../../shared/components/table/table';
 import { NewTransactionForm } from '../new-transaction-form/new-transaction-form';
 import { Budgets } from '../budgets/budgets';
-import { Budgeting } from '../budgeting';
+import { Budgeting } from '../../shared/services/budgeting';
 
 @Component({
   selector: 'app-dashboard',
