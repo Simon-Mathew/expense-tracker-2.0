@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {
+  TransactionService,
+  Transaction,
+} from '../../shared/services/transaction-service';
+import { response } from 'express';
+import { error } from 'console';
 
 @Component({
   selector: 'app-new-transaction-form',
@@ -9,8 +15,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './new-transaction-form.scss',
 })
 export class NewTransactionForm {
-  constructor(private http: HttpClient) {}
-
+  constructor(private transactionService: TransactionService) {}
   category = [
     'Insurance',
     'Rent',
@@ -24,7 +29,8 @@ export class NewTransactionForm {
     'Other',
   ];
 
-  transaction = {
+  // Don't worry about "amount: null" as when user inputs value, the value gets bonded to the variable amount
+  transaction: Transaction = {
     amount: null,
     type: '',
     date: '',
@@ -33,17 +39,22 @@ export class NewTransactionForm {
   };
 
   onSubmit() {
-    console.log('Submitting transaction: ', this.transaction);
+    this.transactionService.addTransaction(this.transaction).subscribe({
+      next: (response) => {
+        console.log('Saved Successfully: ', response);
 
-    this.http
-      .post('http://localhost:3000/api/transactions', this.transaction)
-      .subscribe({
-        next: (response) => {
-          console.log('Saved Successfully ', response);
-        },
-        error: (error) => {
-          console.error('Save error: ', error);
-        },
-      });
+        this.transaction = {
+          amount: null,
+          type: '',
+          date: '',
+          category: '',
+          notes: '',
+        };
+      },
+
+      error: (error) => {
+        console.error('Save Error', error);
+      },
+    });
   }
 }

@@ -1,0 +1,28 @@
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+export interface Transaction {
+  id?: number;
+  amount: number | null;
+  type: string;
+  date: string;
+  category: string;
+  notes: string;
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class TransactionService {
+  private http = inject(HttpClient);
+  private apiUrl = 'http://localhost:3000/api/transactions';
+
+  getTransaction(): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(this.apiUrl);
+  }
+
+  addTransaction(transaction: Transaction): Observable<Transaction[]> {
+    return this.http.post<Transaction[]>(this.apiUrl, transaction);
+  }
+}
