@@ -2,7 +2,7 @@
 <p class="page-description">Enter the transaction information to save it.</p>
 
 <div class="new-transaction">
-  <form class="transaction-form">
+  <form class="transaction-form" (ngSubmit)="onSubmit()">
     <div class="form-control">
       <label for="amount" class="amount-label">AMOUNT</label>
       <input
@@ -10,6 +10,7 @@
         class="form-field form-field-tall"
         id="amount"
         name="amount"
+        [(ngModel)]="transaction.amount"
       />
     </div>
 
@@ -20,6 +21,7 @@
           class="form-field input"
           id="transaction-list"
           name="transaction-list"
+          [(ngModel)]="transaction.type"
         >
           <option>Income</option>
           <option>Expense</option>
@@ -33,13 +35,19 @@
           class="form-field date-input"
           id="date"
           name="date"
+          [(ngModel)]="transaction.date"
         />
       </div>
     </div>
 
     <div class="form-control">
       <label for="category">CATEGORY</label>
-      <select class="form-field input" id="category" name="category">
+      <select
+        class="form-field input"
+        id="category"
+        name="category"
+        [(ngModel)]="transaction.category"
+      >
         <!-- The $index is used to get each item off the list -->
         @for(list of category; track $index) {
         <option>{{list}}</option>
@@ -53,6 +61,7 @@
         class="form-field form-field-tall"
         id="notes"
         name="notes"
+        [(ngModel)]="transaction.notes"
       ></textarea>
     </div>
 
