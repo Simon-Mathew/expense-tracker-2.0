@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {
   TransactionService,
   Transaction,
 } from '../../shared/services/transaction-service';
-import { response } from 'express';
-import { error } from 'console';
 
 @Component({
   selector: 'app-new-transaction-form',

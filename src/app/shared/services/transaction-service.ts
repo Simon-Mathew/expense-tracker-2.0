@@ -22,7 +22,12 @@ export class TransactionService {
     return this.http.get<Transaction[]>(this.apiUrl);
   }
 
-  addTransaction(transaction: Transaction): Observable<Transaction[]> {
-    return this.http.post<Transaction[]>(this.apiUrl, transaction);
+  addTransaction(
+    transaction: Transaction,
+  ): Observable<{ message: string; data: Transaction[] }> {
+    return this.http.post<{ message: string; data: Transaction[] }>(
+      this.apiUrl,
+      transaction,
+    );
   }
 }
