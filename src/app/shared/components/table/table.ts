@@ -1,15 +1,22 @@
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import {
+  Component,
+  Inject,
+  AfterViewInit,
+  OnInit,
+  PLATFORM_ID,
+} from '@angular/core';
+import { AsyncPipe, isPlatformBrowser } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import {
   TransactionService,
   Transaction,
 } from '../../services/transaction-service';
+import { Observable } from 'rxjs';
 
 export interface PeriodicElement {
   date: string;
-  id: number;
+  id?: number;
   amount: number;
   merchant: string;
   type: string;
@@ -18,15 +25,16 @@ export interface PeriodicElement {
 
 @Component({
   selector: 'app-table',
-  imports: [MatTableModule, MatIconModule],
+  imports: [MatTableModule, MatIconModule, AsyncPipe],
   templateUrl: './table.html',
   styleUrl: './table.scss',
 })
-export class Table implements OnInit {
+export class Table implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['id', 'date', 'category', 'type', 'amount'];
   dataSource: Transaction[] = [];
-
+  dataSource$!: Observable<Transaction[]>;
   isBrowser = false;
+
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
     private transactionService: TransactionService,
@@ -35,13 +43,19 @@ export class Table implements OnInit {
   ngOnInit() {
     this.isBrowser = isPlatformBrowser(this.platformId);
 
+    this.dataSource$ = this.transactionService.getTransaction();
     this.transactionService.getTransaction().subscribe((data) => {
+      console.log('API returned: ', data);
       this.dataSource = data;
     });
 
     if (this.isBrowser) {
       this.updateColumns(window.innerWidth);
+    }
+  }
 
+  ngAfterViewInit(): void {
+    if (this.isBrowser) {
       window.addEventListener('resize', () => {
         this.updateColumns(window.innerWidth);
       });

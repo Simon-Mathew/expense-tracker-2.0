@@ -7,8 +7,8 @@ const {
   deleteTransaction,
 } = require("../service/transactionService");
 
-router.get("/", (req, res) => {
-  const transactions = getAllTransactions();
+router.get("/", async (req, res) => {
+  const transactions = await getAllTransactions();
   res.json(transactions);
 });
 
