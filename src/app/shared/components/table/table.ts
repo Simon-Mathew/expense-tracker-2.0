@@ -31,7 +31,6 @@ export interface PeriodicElement {
 })
 export class Table implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['id', 'date', 'category', 'type', 'amount'];
-  dataSource: Transaction[] = [];
   dataSource$!: Observable<Transaction[]>;
   isBrowser = false;
 
@@ -44,10 +43,6 @@ export class Table implements OnInit, AfterViewInit {
     this.isBrowser = isPlatformBrowser(this.platformId);
 
     this.dataSource$ = this.transactionService.getTransaction();
-    this.transactionService.getTransaction().subscribe((data) => {
-      console.log('API returned: ', data);
-      this.dataSource = data;
-    });
 
     if (this.isBrowser) {
       this.updateColumns(window.innerWidth);

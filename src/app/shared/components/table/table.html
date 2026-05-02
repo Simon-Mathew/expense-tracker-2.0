@@ -1,5 +1,5 @@
 <section class="example-container mat-elevation-z8" tabindex="0">
-  <!-- @defer apparantly helps wait till the data arrived -->
+  <!-- async pipe waits for the API Observable and unwraps the transaction array -->
   @defer { @if (dataSource$ | async; as dataSource) {
   <table mat-table [dataSource]="dataSource">
     <!-- Id Column -->
