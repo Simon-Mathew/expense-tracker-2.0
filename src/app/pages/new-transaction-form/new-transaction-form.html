@@ -1,0 +1,73 @@
+<h1 class="page-title">Log New Transaction</h1>
+<p class="page-description">Enter the transaction information to save it.</p>
+
+<div class="new-transaction">
+  <form class="transaction-form" (ngSubmit)="onSubmit()">
+    <div class="form-control">
+      <label for="amount" class="amount-label">AMOUNT</label>
+      <input
+        type="number"
+        class="form-field form-field-tall"
+        id="amount"
+        name="amount"
+        [(ngModel)]="transaction.amount"
+      />
+    </div>
+
+    <div class="form-row">
+      <div class="form-control half-width">
+        <label for="transaction-list">TRANSACTION TYPE</label>
+        <select
+          class="form-field input"
+          id="transaction-list"
+          name="transaction-list"
+          [(ngModel)]="transaction.type"
+        >
+          <option>Income</option>
+          <option>Expense</option>
+        </select>
+      </div>
+
+      <div class="form-control half-width">
+        <label for="date">DATE</label>
+        <input
+          type="date"
+          class="form-field date-input"
+          id="date"
+          name="date"
+          [(ngModel)]="transaction.date"
+        />
+      </div>
+    </div>
+
+    <div class="form-control">
+      <label for="category">CATEGORY</label>
+      <select
+        class="form-field input"
+        id="category"
+        name="category"
+        [(ngModel)]="transaction.category"
+      >
+        <!-- The $index is used to get each item off the list -->
+        @for(list of category; track $index) {
+        <option>{{list}}</option>
+        }
+      </select>
+    </div>
+
+    <div class="form-control">
+      <label for="notes">NOTES/DESCRIPTION</label>
+      <textarea
+        class="form-field form-field-tall"
+        id="notes"
+        name="notes"
+        [(ngModel)]="transaction.notes"
+      ></textarea>
+    </div>
+
+    <div class="form-action">
+      <button type="submit" class="submit">Record Transaction</button>
+      <button type="button" class="cancel">Cancel</button>
+    </div>
+  </form>
+</div>

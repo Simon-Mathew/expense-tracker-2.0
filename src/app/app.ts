@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Dashboard } from './dashboard/Dashboard';
-import { Sidenav } from './sidenav/sidenav';
-import { SidenavService } from './sidenavService';
+import { Dashboard } from '../app/pages/dashboard/Dashboard';
+import { Sidenav } from '../app/pages/sidenav/sidenav';
+import { SidenavService } from './shared/services/sidenavService';
 import { Card } from '../../src/app/shared/components/card/card';
 
 @Component({

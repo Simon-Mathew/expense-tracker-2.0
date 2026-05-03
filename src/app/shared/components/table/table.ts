@@ -1,12 +1,22 @@
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import {
+  Component,
+  Inject,
+  AfterViewInit,
+  OnInit,
+  PLATFORM_ID,
+} from '@angular/core';
+import { AsyncPipe, isPlatformBrowser } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
-import { MOCK_TRANSACTIONS } from '../../../../../public/assets/mock-data';
 import { MatIconModule } from '@angular/material/icon';
+import {
+  TransactionService,
+  Transaction,
+} from '../../services/transaction-service';
+import { Observable } from 'rxjs';
 
 export interface PeriodicElement {
   date: string;
-  id: number;
+  id?: number;
   amount: number;
   merchant: string;
   type: string;
@@ -15,32 +25,32 @@ export interface PeriodicElement {
 
 @Component({
   selector: 'app-table',
-  imports: [MatTableModule, MatIconModule],
+  imports: [MatTableModule, MatIconModule, AsyncPipe],
   templateUrl: './table.html',
   styleUrl: './table.scss',
 })
-export class Table implements OnInit {
-  protected readonly data = MOCK_TRANSACTIONS;
-
-  displayedColumns: string[] = [
-    'id',
-    'date',
-    'merchant',
-    'category',
-    'type',
-    'amount',
-  ];
-  dataSource = this.data;
-
+export class Table implements OnInit, AfterViewInit {
+  displayedColumns: string[] = ['id', 'date', 'category', 'type', 'amount'];
+  dataSource$!: Observable<Transaction[]>;
   isBrowser = false;
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: object,
+    private transactionService: TransactionService,
+  ) {}
 
   ngOnInit() {
     this.isBrowser = isPlatformBrowser(this.platformId);
 
+    this.dataSource$ = this.transactionService.getTransaction();
+
     if (this.isBrowser) {
       this.updateColumns(window.innerWidth);
+    }
+  }
 
+  ngAfterViewInit(): void {
+    if (this.isBrowser) {
       window.addEventListener('resize', () => {
         this.updateColumns(window.innerWidth);
       });
@@ -49,18 +59,11 @@ export class Table implements OnInit {
 
   updateColumns(width: number) {
     if (width <= 600) {
-      this.displayedColumns = ['date', 'amount', 'merchant'];
+      this.displayedColumns = ['date', 'amount', 'category'];
     } else if (width <= 768) {
-      this.displayedColumns = ['date', 'amount', 'merchant', 'category'];
+      this.displayedColumns = ['date', 'amount', 'category', 'type'];
     } else {
-      this.displayedColumns = [
-        'id',
-        'date',
-        'merchant',
-        'category',
-        'type',
-        'amount',
-      ];
+      this.displayedColumns = ['id', 'date', 'category', 'type', 'amount'];
     }
   }
 }
