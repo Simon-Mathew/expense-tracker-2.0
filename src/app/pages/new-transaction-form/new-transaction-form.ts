@@ -28,7 +28,7 @@ export class NewTransactionForm {
 
   // Don't worry about "amount: null" as when user inputs value, the value gets bonded to the variable amount
   transaction: Transaction = {
-    amount: null,
+    amount: 0,
     type: '',
     date: '',
     category: '',
@@ -41,7 +41,7 @@ export class NewTransactionForm {
         console.log('Saved Successfully: ', response);
 
         this.transaction = {
-          amount: null,
+          amount: 0,
           type: '',
           date: '',
           category: '',
