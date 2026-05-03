@@ -17,7 +17,7 @@ export class NewTransactionForm {
     'Insurance',
     'Rent',
     'Groceries',
-    'Fuel',
+    'Transport',
     'House Bills',
     'Creams For Medication',
     'Subscriptions',

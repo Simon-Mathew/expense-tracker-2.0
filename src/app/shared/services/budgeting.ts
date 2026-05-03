@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
-import {
-  MOCK_TRANSACTIONS,
-  transactions,
-} from '../../../../public/assets/mock-data';
+import { TransactionService, Transaction } from './transaction-service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Budgeting {
-  protected readonly info = MOCK_TRANSACTIONS;
+  dataSource: Transaction[] = [];
+
+  constructor(private transactionService: TransactionService) {
+    this.transactionService.getTransaction().subscribe((data) => {
+      this.dataSource = data;
+    });
+  }
 
   // This  function is used to get the date for the latest "Income"!!!
-  getLatestIncomeDate(): transactions | null {
-    const incomes = this.info.filter((t) => t.type === 'Income');
+  getLatestIncomeDate(): Transaction | null {
+    const incomes = this.dataSource.filter((t) => t.type === 'Income');
     if (incomes.length === 0) return null;
 
     return incomes.reduce((current, latest) => {
@@ -29,14 +32,14 @@ export class Budgeting {
     });
   }
 
-  getCurrentFortnightTransactions(): transactions[] {
+  getCurrentFortnightTransactions(): Transaction[] {
     const latest = this.getLatestIncomeDate();
     if (!latest) return [];
 
     const startDate = new Date(latest.date).getTime();
     const endDate = startDate + 13 * 24 * 60 * 60 * 1000;
 
-    return this.info.filter((t) => {
+    return this.dataSource.filter((t) => {
       const transactionDate = new Date(t.date).getTime();
 
       return (

@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
 import { BudgetsCards } from '../../shared/components/budgets-cards/budgets-cards';
-import {
-  MOCK_TRANSACTIONS,
-  transactions,
-} from '../../../../public/assets/mock-data';
 import { Budgeting } from '../../shared/services/budgeting';
 
 @Component({
@@ -13,8 +9,6 @@ import { Budgeting } from '../../shared/services/budgeting';
   styleUrl: './budgets.scss',
 })
 export class Budgets {
-  protected readonly info = MOCK_TRANSACTIONS;
-
   // Using Dictionary
   protected readonly budgetLimits = {
     Rent: 1200,
@@ -30,7 +24,7 @@ export class Budgets {
 
   //  Using this constructor to get the Budget date cycle running
   constructor(private budgeting: Budgeting) {
-    console.log(this.budgeting.getLatestIncomeDate());
+    console.log('Latest Income', this.budgeting.getLatestIncomeDate());
 
     // latestIncome uses the function from the service to get the latest date
     const latest = this.budgeting.getLatestIncomeDate();
