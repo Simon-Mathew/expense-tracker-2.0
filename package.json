@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --hmr=false --live-reload=true --poll=1000",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "backend": "cd backend && node server.js",
     "serve:ssr:expense-tracker-2.0": "node dist/expense-tracker-2.0/server/server.mjs"
   },
   "private": true,
