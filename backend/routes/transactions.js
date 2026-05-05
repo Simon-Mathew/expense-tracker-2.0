@@ -4,7 +4,7 @@ const router = express.Router();
 const {
   getAllTransactions,
   createNewTransaction,
-  deleteTransaction,
+  // deleteTransaction,
 } = require("../service/transactionService");
 
 router.get("/", async (req, res) => {
@@ -26,13 +26,13 @@ router.post("/", (req, res) => {
   });
 });
 
-router.delete("/:id", async (req, res) => {
-  const deleted = await deleteTransaction(req.params.id);
+// router.delete("/:id", async (req, res) => {
+//   const deleted = await deleteTransaction(req.params.id);
 
-  if (!deleted) {
-    return res.status(404).json({ message: "Not Found" });
-  }
-  res.status(200).json({ message: "Deleted Successfully" });
-});
+//   if (!deleted) {
+//     return res.status(404).json({ message: "Not Found" });
+//   }
+//   res.status(200).json({ message: "Deleted Successfully" });
+// });
 
 module.exports = router;

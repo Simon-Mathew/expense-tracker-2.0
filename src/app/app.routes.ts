@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { Dashboard } from '../app/pages/dashboard/Dashboard';
+import { Dashboard } from './pages/dashboard/dashboard';
 import { NewTransactionForm } from './pages/new-transaction-form/new-transaction-form';
 import { Budgets } from '../app/pages/budgets/budgets';
 import { TransactionPage } from './pages/transaction-page/transaction-page';

@@ -12,7 +12,7 @@
 
 .topbar {
   height: var(--topbar-height);
-  background: rgba(255, 255, 255, 0.85);
+  // background: rgba(255, 255, 255, 0.85);
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
@@ -30,7 +30,7 @@
 }
 
 .topbar-header {
-  color: var(--primary);
+  // color: var(--primary);
   // font-size: larger;
 }
 

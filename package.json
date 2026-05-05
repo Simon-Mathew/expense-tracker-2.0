@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "backend": "cd backend && node server.js",
+    "dev": "concurrently \"npm run start \" \"npm run backend\"",
     "serve:ssr:expense-tracker-2.0": "node dist/expense-tracker-2.0/server/server.mjs"
   },
   "private": true,
