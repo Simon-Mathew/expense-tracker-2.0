@@ -21,7 +21,7 @@ export class NewTransactionForm {
     'House Bills',
     'Creams For Medication',
     'Subscriptions',
-    'Dinning Out',
+    'Dinning',
     'Credit Card Bills',
     'Other',
   ];
