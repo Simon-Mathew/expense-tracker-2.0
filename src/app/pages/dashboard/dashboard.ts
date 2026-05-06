@@ -8,10 +8,11 @@ import {
   TransactionService,
   Transaction,
 } from '../../shared/services/transaction-service';
+import { Button } from '../../shared/components/button/button';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [Card, Divider, RouterLink, Table, NewTransactionForm],
+  imports: [Card, Divider, RouterLink, Table, NewTransactionForm, Button],
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.scss'],
 })
