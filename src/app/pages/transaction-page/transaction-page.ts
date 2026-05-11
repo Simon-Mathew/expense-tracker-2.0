@@ -18,15 +18,12 @@ export class TransactionPage implements OnInit {
   constructor(private transactionService: TransactionService) {}
 
   ngOnInit(): void {
-    // this.tranactionService.
     this.transactionService
       .getTransaction()
       .subscribe((data: Transaction[]) => {
-        this.dataSource = data;
+        this.dataSource = data.sort((a, b) => {
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        });
       });
-
-    this.dataSource.sort((a, b) => {
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
-    });
   }
 }

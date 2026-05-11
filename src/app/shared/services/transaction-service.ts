@@ -2,11 +2,26 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export type TransactionType = 'Income' | 'Expense';
+
+export type Category =
+  | 'Insurance'
+  | 'Rent'
+  | 'Groceries'
+  | 'Transport'
+  | 'House Bills'
+  | 'Creams For Medication'
+  | 'Subscriptions'
+  | 'Dinning'
+  | 'Credit Card Bills'
+  | 'Other';
+
 export interface Transaction {
+  _id: string;
   amount: number;
-  type: string;
+  type: TransactionType;
   date: string;
-  category: string;
+  category: Category;
   notes: string;
 }
 

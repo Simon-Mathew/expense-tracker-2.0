@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import {
   TransactionService,
   Transaction,
+  TransactionType,
+  Category,
 } from '../../shared/services/transaction-service';
 
 @Component({
@@ -13,7 +15,7 @@ import {
 })
 export class NewTransactionForm {
   constructor(private transactionService: TransactionService) {}
-  category = [
+  category: Category[] = [
     'Insurance',
     'Rent',
     'Groceries',
@@ -28,10 +30,11 @@ export class NewTransactionForm {
 
   // Don't worry about "amount: null" as when user inputs value, the value gets bonded to the variable amount
   transaction: Transaction = {
+    _id: '',
     amount: 0,
-    type: '',
+    type: 'Expense',
     date: '',
-    category: '',
+    category: 'Other',
     notes: '',
   };
 
@@ -41,10 +44,11 @@ export class NewTransactionForm {
         console.log('Saved Successfully: ', response);
 
         this.transaction = {
+          _id: '',
           amount: 0,
-          type: '',
+          type: 'Expense',
           date: '',
-          category: '',
+          category: 'Other',
           notes: '',
         };
       },

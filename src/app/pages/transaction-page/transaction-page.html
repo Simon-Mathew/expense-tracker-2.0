@@ -7,4 +7,12 @@
   <app-button>Subscription</app-button>
 </div>
 
-<app-expense-income-card />
+@for (transaction of dataSource; track transaction._id){
+<app-expense-income-card
+  [type]="transaction.type"
+  [category]="transaction.category"
+  [notes]="transaction.notes"
+  [date]="transaction.date"
+  [amount]="transaction.amount"
+/>
+}
