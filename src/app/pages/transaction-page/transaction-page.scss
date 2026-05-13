@@ -55,3 +55,212 @@ h1 {
   font-size: 1rem;
   margin: 24px 0;
 }
+
+.error-state {
+  background: #fef3f2;
+  border: 1px solid #fecdca;
+  border-radius: var(--radius-sm);
+  color: #b42318;
+  font-weight: 700;
+  margin: 0 0 16px;
+  padding: 12px 14px;
+}
+
+.transaction-item {
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.transaction-item.selected {
+  margin-bottom: 26px;
+}
+
+.transaction-item.selected app-expense-income-card {
+  display: block;
+}
+
+.transaction-item.selected::before {
+  border: 2px solid rgba(36, 82, 231, 0.28);
+  border-radius: var(--radius-md);
+  content: "";
+  inset: -4px;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+.edit-icon-button {
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: var(--shadow-subtle);
+  color: var(--muted);
+  cursor: pointer;
+  display: inline-flex;
+  height: 38px;
+  justify-content: center;
+  padding: 0;
+  position: absolute;
+  right: 18px;
+  top: 26px;
+  transition:
+    background-color 140ms ease,
+    border-color 140ms ease,
+    color 140ms ease,
+    transform 140ms ease;
+  width: 38px;
+  z-index: 2;
+}
+
+.edit-icon-button:hover,
+.edit-icon-button[aria-pressed="true"] {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+.edit-icon-button:focus-visible {
+  box-shadow: 0 0 0 3px rgba(36, 82, 231, 0.22);
+  outline: none;
+}
+
+.edit-icon-button .material-icons {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.transaction-actions {
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 10px;
+  padding: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.amount-field {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  margin-right: auto;
+}
+
+.amount-field span {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.amount-field input {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  min-height: 40px;
+  padding: 0 12px;
+  width: 160px;
+}
+
+.amount-field input:focus-visible {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(36, 82, 231, 0.18);
+  outline: none;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.save-button,
+.secondary-button,
+.delete-button {
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  min-height: 40px;
+  padding: 0 14px;
+}
+
+.save-button {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.secondary-button {
+  background: var(--surface-soft);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.delete-button {
+  align-items: center;
+  background: #fff1f3;
+  border-color: #fecdd3;
+  color: #be123c;
+  display: inline-flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.delete-button .material-icons {
+  font-size: 18px;
+}
+
+.save-button:hover {
+  background: var(--primary-hover);
+}
+
+.secondary-button:hover {
+  background: var(--surface-muted);
+}
+
+.delete-button:hover {
+  background: #ffe4e6;
+}
+
+.save-button:disabled,
+.secondary-button:disabled,
+.delete-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+}
+
+@media (max-width: 640px) {
+  .transaction-item {
+    margin-bottom: 18px;
+  }
+
+  .edit-icon-button {
+    height: 38px;
+    right: 16px;
+    top: 18px;
+    width: 38px;
+  }
+
+  .transaction-actions,
+  .amount-field,
+  .action-buttons {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .amount-field {
+    width: 100%;
+  }
+
+  .amount-field input,
+  .save-button,
+  .secondary-button,
+  .delete-button {
+    width: 100%;
+  }
+}

@@ -46,4 +46,18 @@ export class TransactionService {
       transaction,
     );
   }
+
+  updateTransactionAmount(
+    id: string,
+    amount: number,
+  ): Observable<{ message: string; data: Transaction }> {
+    return this.http.patch<{ message: string; data: Transaction }>(
+      `${this.apiUrl}/${id}`,
+      { amount },
+    );
+  }
+
+  deleteTransaction(id: string): Observable<{ message: string }> {
+    return this.http.delete<{ message: string }>(`${this.apiUrl}/${id}`);
+  }
 }

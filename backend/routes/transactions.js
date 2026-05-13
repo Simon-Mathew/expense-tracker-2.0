@@ -4,7 +4,8 @@ const router = express.Router();
 const {
   getAllTransactions,
   createNewTransaction,
-  // deleteTransaction,
+  deleteTransaction,
+  updateTransactionAmount,
 } = require("../service/transactionService");
 
 router.get("/", async (req, res) => {
@@ -26,13 +27,35 @@ router.post("/", async (req, res) => {
   });
 });
 
-// router.delete("/:id", async (req, res) => {
-//   const deleted = await deleteTransaction(req.params.id);
+router.patch("/:id", async (req, res) => {
+  const amount = Number(req.body.amount);
 
-//   if (!deleted) {
-//     return res.status(404).json({ message: "Not Found" });
-//   }
-//   res.status(200).json({ message: "Deleted Successfully" });
-// });
+  if (!Number.isFinite(amount) || amount < 0) {
+    return res.status(400).json({
+      message: "Amount must be a positive number",
+    });
+  }
+
+  const updated = await updateTransactionAmount(req.params.id, amount);
+
+  if (!updated) {
+    return res.status(404).json({ message: "Not Found" });
+  }
+
+  res.status(200).json({
+    message: "Transaction updated successfully",
+    data: updated,
+  });
+});
+
+router.delete("/:id", async (req, res) => {
+  const deleted = await deleteTransaction(req.params.id);
+
+  if (!deleted) {
+    return res.status(404).json({ message: "Not Found" });
+  }
+
+  res.status(200).json({ message: "Deleted Successfully" });
+});
 
 module.exports = router;

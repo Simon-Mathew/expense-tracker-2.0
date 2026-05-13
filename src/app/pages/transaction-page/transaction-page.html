@@ -14,14 +14,71 @@
   }
 </div>
 
+@if (errorMessage()) {
+  <p class="error-state" role="alert">{{ errorMessage() }}</p>
+}
+
 @for (transaction of filteredTransactions(); track transaction._id) {
-  <app-expense-income-card
-    [type]="transaction.type"
-    [category]="transaction.category"
-    [notes]="transaction.notes"
-    [date]="transaction.date"
-    [amount]="transaction.amount"
-  />
+  <section
+    class="transaction-item"
+    [class.selected]="editingTransactionId() === transaction._id"
+  >
+    <button
+      type="button"
+      class="edit-icon-button"
+      [attr.aria-label]="'Edit ' + transaction.category + ' transaction'"
+      [attr.aria-pressed]="editingTransactionId() === transaction._id"
+      (click)="startEditing(transaction)"
+    >
+      <span class="material-icons" aria-hidden="true">edit</span>
+    </button>
+
+    <app-expense-income-card
+      [type]="transaction.type"
+      [category]="transaction.category"
+      [notes]="transaction.notes"
+      [date]="transaction.date"
+      [amount]="transaction.amount"
+    />
+
+    @if (editingTransactionId() === transaction._id) {
+      <div class="transaction-actions">
+        <label class="amount-field">
+          <span>Amount</span>
+          <input
+            #amountInput
+            type="number"
+            min="0"
+            step="0.01"
+            [value]="transaction.amount"
+          />
+        </label>
+
+        <div class="action-buttons">
+          <button
+            type="button"
+            class="save-button"
+            [disabled]="savingTransactionId() === transaction._id"
+            (click)="updateAmount(transaction, amountInput.valueAsNumber)"
+          >
+            Save
+          </button>
+          <button
+            type="button"
+            class="delete-button"
+            [disabled]="deletingTransactionId() === transaction._id"
+            (click)="deleteTransaction(transaction)"
+          >
+            <span class="material-icons" aria-hidden="true">delete</span>
+            Delete
+          </button>
+          <button type="button" class="secondary-button" (click)="cancelEditing()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    }
+  </section>
 } @empty {
   <p class="empty-state">No transactions found for this filter.</p>
 }

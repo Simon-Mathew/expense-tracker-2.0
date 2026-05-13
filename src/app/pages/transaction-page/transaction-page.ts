@@ -32,6 +32,10 @@ export class TransactionPage implements OnInit {
   ];
 
   protected readonly selectedFilter = signal<TransactionFilter>('All');
+  protected readonly editingTransactionId = signal<string | null>(null);
+  protected readonly savingTransactionId = signal<string | null>(null);
+  protected readonly deletingTransactionId = signal<string | null>(null);
+  protected readonly errorMessage = signal('');
   private readonly transactions = signal<Transaction[]>([]);
 
   protected readonly filteredTransactions = computed(() => {
@@ -63,6 +67,64 @@ export class TransactionPage implements OnInit {
 
   protected selectFilter(filter: TransactionFilter): void {
     this.selectedFilter.set(filter);
+  }
+
+  protected startEditing(transaction: Transaction): void {
+    this.errorMessage.set('');
+    this.editingTransactionId.set(transaction._id);
+  }
+
+  protected cancelEditing(): void {
+    this.errorMessage.set('');
+    this.editingTransactionId.set(null);
+  }
+
+  protected updateAmount(transaction: Transaction, amount: number): void {
+    if (!Number.isFinite(amount) || amount < 0) {
+      this.errorMessage.set('Enter a valid transaction amount.');
+      return;
+    }
+
+    this.errorMessage.set('');
+    this.savingTransactionId.set(transaction._id);
+
+    this.transactionService
+      .updateTransactionAmount(transaction._id, amount)
+      .subscribe({
+        next: (response) => {
+          this.transactions.update((transactions) =>
+            this.sortByLatestDate(
+              transactions.map((item) =>
+                item._id === transaction._id ? response.data : item,
+              ),
+            ),
+          );
+          this.editingTransactionId.set(null);
+          this.savingTransactionId.set(null);
+        },
+        error: () => {
+          this.errorMessage.set('Could not update this transaction.');
+          this.savingTransactionId.set(null);
+        },
+      });
+  }
+
+  protected deleteTransaction(transaction: Transaction): void {
+    this.errorMessage.set('');
+    this.deletingTransactionId.set(transaction._id);
+
+    this.transactionService.deleteTransaction(transaction._id).subscribe({
+      next: () => {
+        this.transactions.update((transactions) =>
+          transactions.filter((item) => item._id !== transaction._id),
+        );
+        this.deletingTransactionId.set(null);
+      },
+      error: () => {
+        this.errorMessage.set('Could not delete this transaction.');
+        this.deletingTransactionId.set(null);
+      },
+    });
   }
 
   private sortByLatestDate(transactions: Transaction[]): Transaction[] {

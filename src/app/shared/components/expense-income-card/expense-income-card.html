@@ -4,14 +4,14 @@
   <div class="inner-card">
     <div class="icon-category">
       <app-icons class="icon" [category]="category"></app-icons>
-      <div>
+      <div class="transaction-copy">
         <h2>{{category}}</h2>
         <p>{{fiveWordsNotes(notes || '')}}</p>
       </div>
     </div>
     <div class="date-amount">
-      <p>{{date}}</p>
-      <h3>{{amount}}</h3>
+      <p class="transaction-date">{{date}}</p>
+      <h2 class="income-amount">+ ${{amount}}</h2>
     </div>
   </div>
   }
@@ -22,14 +22,14 @@
     <div class="icon-category">
       <app-icons class="icon" [category]="category"></app-icons>
 
-      <div>
+      <div class="transaction-copy">
         <h2>{{category}}</h2>
         <p>{{fiveWordsNotes(notes || '')}}</p>
       </div>
     </div>
     <div class="date-amount">
-      <p>{{date}}</p>
-      <h3>{{amount}}</h3>
+      <p class="transaction-date">{{date}}</p>
+      <h2 class="expense-amount">- $ {{amount}}</h2>
     </div>
   </div>
   }

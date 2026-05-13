@@ -21,8 +21,17 @@ async function deleteTransaction(id) {
   return await Transactions.findByIdAndDelete(id);
 }
 
+async function updateTransactionAmount(id, amount) {
+  return await Transactions.findByIdAndUpdate(
+    id,
+    { amount },
+    { new: true, runValidators: true },
+  );
+}
+
 module.exports = {
   getAllTransactions,
   createNewTransaction,
   deleteTransaction,
+  updateTransactionAmount,
 };
