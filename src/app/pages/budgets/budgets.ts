@@ -1,54 +1,80 @@
-import { Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { BudgetsCards } from '../../shared/components/budgets-cards/budgets-cards';
-import { Budgeting } from '../../shared/services/budgeting';
+import {
+  BudgetCategorySummary,
+  Budgeting,
+} from '../../shared/services/budgeting';
 
 @Component({
   selector: 'app-budgets',
   imports: [BudgetsCards],
   templateUrl: './budgets.html',
   styleUrl: './budgets.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Budgets {
-  // Using Dictionary
-  protected readonly budgetLimits = {
-    Rent: 1200,
-    Groceries: 200,
-    Dining: 100,
-    Transport: 250,
-  };
+export class Budgets implements OnInit {
+  private readonly budgeting = inject(Budgeting);
+  private readonly destroyRef = inject(DestroyRef);
 
-  rentSpent = 0;
-  groceriesSpent = 0;
-  diningSpent = 0;
-  transportSpent = 0;
+  protected readonly budgetCards = signal<BudgetCategorySummary[]>([]);
+  protected readonly hasIncome = signal(false);
+  protected readonly isLoading = signal(true);
+  protected readonly errorMessage = signal('');
 
-  //  Using this constructor to get the Budget date cycle running
-  constructor(private budgeting: Budgeting) {
-    console.log('Latest Income', this.budgeting.getLatestIncomeDate());
+  ngOnInit(): void {
+    this.loadBudgetSummary();
+  }
 
-    // latestIncome uses the function from the service to get the latest date
-    const latest = this.budgeting.getLatestIncomeDate();
-    const latestIncome = latest ? new Date(latest.date).getTime() : null;
-
-    if (latestIncome !== null) {
-      const fortnightBudget = latestIncome + 13 * 24 * 60 * 60 * 1000;
-      const fortnightDate = new Date(fortnightBudget);
-      console.log('End of cycle', fortnightDate);
-
-      console.log('Start of cycle', latest?.date);
-      console.log('End of cycle', fortnightDate);
-
-      this.rentSpent = this.budgeting.getCategorySpent('Rent');
-      this.groceriesSpent = this.budgeting.getCategorySpent('Groceries');
-      this.diningSpent = this.budgeting.getCategorySpent('Dining');
-      this.transportSpent = this.budgeting.getCategorySpent('Transport');
-
-      console.log('Rent:', this.rentSpent);
-      console.log('Groceries:', this.groceriesSpent);
-      console.log('Dining:', this.diningSpent);
-      console.log('Transport:', this.transportSpent);
-    } else {
-      console.log('No income yet');
+  protected updateBudgetLimit(
+    category: BudgetCategorySummary['category'],
+    limit: number,
+  ): void {
+    if (!Number.isFinite(limit) || limit < 0) {
+      return;
     }
+
+    this.budgeting
+      .updateBudgetLimit(category, limit)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () => {
+          this.budgetCards.update((cards) =>
+            cards.map((card) =>
+              card.category === category ? { ...card, limit } : card,
+            ),
+          );
+        },
+        error: () => {
+          this.errorMessage.set('Could not save this budget limit.');
+        },
+      });
+  }
+
+  private loadBudgetSummary(): void {
+    this.isLoading.set(true);
+    this.errorMessage.set('');
+
+    this.budgeting
+      .getBudgetSummary()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (summary) => {
+          this.hasIncome.set(summary.latestIncome !== null);
+          this.budgetCards.set(summary.categories);
+          this.isLoading.set(false);
+        },
+        error: () => {
+          this.errorMessage.set('Could not load budget data.');
+          this.isLoading.set(false);
+        },
+      });
   }
 }

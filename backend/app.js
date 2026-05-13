@@ -16,7 +16,9 @@ app.use(
 
 app.use(express.json());
 const transactionsRoutes = require("./routes/transactions");
+const budgetsRoutes = require("./routes/budgets");
 app.use("/api/transactions", transactionsRoutes);
+app.use("/api/budgets", budgetsRoutes);
 
 // routes
 app.get("/", (req, res) => {

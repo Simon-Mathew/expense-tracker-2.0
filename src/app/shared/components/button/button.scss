@@ -1,13 +1,9 @@
 .btn {
-  // Design inspiration
-  //   https://getcssscan.com/css-buttons-examples
-  margin: 10px;
+  margin: 0;
   align-items: center;
-  background-color: #2563eb;
-
-  align-items: center;
+  background-color: var(--primary);
   border: 0;
-  border-radius: 100px;
+  border-radius: var(--radius-sm);
   box-sizing: border-box;
   color: #ffffff;
   cursor: pointer;
@@ -17,15 +13,15 @@
     "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans",
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande",
     Helvetica, Arial, sans-serif;
-  font-size: large;
+  font-size: 1rem;
   font-weight: 700;
   justify-content: center;
   line-height: 20px;
   max-width: 480px;
-  min-height: 40px;
-  min-width: 0px;
+  min-height: 44px;
+  min-width: 0;
   overflow: hidden;
-  padding: 0 20px;
+  padding: 0 18px;
   text-align: center;
   touch-action: manipulation;
   transition:
@@ -39,7 +35,7 @@
 
 .btn:hover,
 .btn:focus {
-  background-color: #16437e;
+  background-color: var(--primary-hover);
   color: #ffffff;
 }
 

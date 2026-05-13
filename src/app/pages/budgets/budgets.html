@@ -3,30 +3,44 @@
     <h1 class="Budgets-heading">Budgets</h1>
   </div>
   <div>
-    <span class="badge">This Fortnight</span>
+    <span class="badge">Tracked Spend</span>
     <span class="badge">AUD</span>
   </div>
 </div>
 
-<!-- Rent card -->
-<app-budgets-cards title="Rent" [value]="rentSpent" [limit]="450">
-  <span value>$ {{rentSpent}}</span>
-  <span limit>$450</span>
-</app-budgets-cards>
+@if (isLoading()) {
+  <p class="empty-state">Loading budget data...</p>
+} @else if (errorMessage()) {
+  <p class="empty-state" role="alert">{{ errorMessage() }}</p>
+} @else {
+  @if (!hasIncome()) {
+    <p class="empty-state">
+      No income transaction found yet. Showing tracked expenses across all saved
+      transactions.
+    </p>
+  }
 
-<!-- Groceries card -->
-<app-budgets-cards title="Groceries" [value]="groceriesSpent" [limit]="220">
-  <span value>$ {{groceriesSpent}}</span>
-  <span limit>$220</span>
-</app-budgets-cards>
+  @for (budget of budgetCards(); track budget.category) {
+    <div class="budget-card">
+      <app-budgets-cards
+        [title]="budget.title"
+        [value]="budget.spent"
+        [limit]="budget.limit"
+      />
 
-<!-- Dining Card -->
-<app-budgets-cards title="Transport" [value]="transportSpent" [limit]="200">
-  <span value>$ {{transportSpent}}</span>
-  <span limit>$200</span>
-</app-budgets-cards>
-
-<app-budgets-cards title="Dining" [value]="diningSpent" [limit]="150">
-  <span value>$ {{diningSpent}}</span>
-  <span limit>$150</span>
-</app-budgets-cards>
+      <label class="limit-field">
+        <span>Budget limit</span>
+        <input
+          #limitInput
+          type="number"
+          min="0"
+          step="1"
+          [value]="budget.limit"
+          (change)="updateBudgetLimit(budget.category, limitInput.valueAsNumber)"
+        />
+      </label>
+    </div>
+  } @empty {
+    <p class="empty-state">No budget categories found.</p>
+  }
+}

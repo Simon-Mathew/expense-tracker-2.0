@@ -1,25 +1,31 @@
 section {
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 
 h1 {
   margin: 0;
   font-size: 20px;
   font-weight: 800;
-  letter-spacing: 0.05rem;
+  color: var(--text);
+  letter-spacing: 0;
 }
 
 h3 {
   margin: 0;
   margin-bottom: 5px;
-  font-weight: 300;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
 }
+
 p {
   font-family: sans-serif;
-  color: #555e6b;
+  color: var(--muted);
   font-size: 0.9rem;
   font-weight: 500;
-  letter-spacing: 0.03rem;
+  letter-spacing: 0;
 }
 
 .card-header {
@@ -29,19 +35,21 @@ p {
 }
 .percentage {
   padding: 6px 10px;
-  border: 1px solid #b6b6b6;
-  background-color: #f1f2fa;
+  border: 1px solid var(--border);
+  background-color: var(--surface-soft);
+  color: var(--text);
   font-size: 0.8rem;
-  border-radius: 15px;
-  font-weight: 500;
-  letter-spacing: 0.05rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  letter-spacing: 0;
 }
 
 .card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
 }
 
 .progress-div {
@@ -77,9 +85,9 @@ p {
 }
 
 .input {
-  color: black;
+  color: var(--text);
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
   margin: 0;
 }
 
@@ -87,15 +95,13 @@ p {
 .progress {
   height: 12px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  background: var(--surface-muted);
   overflow: hidden;
 }
+
 .fill {
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(43, 255, 0, 0.65),
-    rgba(255, 0, 0, 0.55)
-  );
+  background: linear-gradient(90deg, var(--success), var(--primary));
+  transition: width 180ms ease;
 }

@@ -1,8 +1,10 @@
 .example-container {
   height: 400px;
   max-width: 100%;
-  overflow: hidden;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
 }
 
 table {
@@ -28,33 +30,3 @@ td.mat-column-position {
 .mat-mdc-table-sticky-border-elem-left {
   border-right: 1px solid #e0e0e0;
 }
-
-// @media (max-width: 992px) {
-//   .example-container {
-//     width: 500px;
-//   }
-// // }
-
-// @media (max-width: 768px) {
-//   .example-container {
-//     width: 500px;
-//   }
-// }
-
-// @media (max-width: 660px) {
-//   .example-container {
-//     width: 450px;
-//   }
-// }
-
-// @media (max-width: 600px) {
-//   .example-container {
-//     width: 390px;
-//   }
-// }
-
-// @media (max-width: 500px) {
-//   .example-container {
-//     width: 350px;
-//   }
-// }

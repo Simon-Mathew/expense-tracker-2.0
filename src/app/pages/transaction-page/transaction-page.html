@@ -1,18 +1,27 @@
 <h1>Transaction History</h1>
 
-<div class="btn-category">
-  <app-button>All</app-button>
-  <app-button>Income</app-button>
-  <app-button>Expenses</app-button>
-  <app-button>Subscription</app-button>
+<div class="btn-category" aria-label="Filter transactions">
+  @for (filter of filters; track filter) {
+    <button
+      type="button"
+      class="filter-button"
+      [class.active]="selectedFilter() === filter"
+      [attr.aria-pressed]="selectedFilter() === filter"
+      (click)="selectFilter(filter)"
+    >
+      {{ filter }}
+    </button>
+  }
 </div>
 
-@for (transaction of dataSource; track transaction._id){
-<app-expense-income-card
-  [type]="transaction.type"
-  [category]="transaction.category"
-  [notes]="transaction.notes"
-  [date]="transaction.date"
-  [amount]="transaction.amount"
-/>
+@for (transaction of filteredTransactions(); track transaction._id) {
+  <app-expense-income-card
+    [type]="transaction.type"
+    [category]="transaction.category"
+    [notes]="transaction.notes"
+    [date]="transaction.date"
+    [amount]="transaction.amount"
+  />
+} @empty {
+  <p class="empty-state">No transactions found for this filter.</p>
 }

@@ -12,14 +12,14 @@ router.get("/", async (req, res) => {
   res.json(transactions);
 });
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   const { amount, type, category, date } = req.body;
   if (!amount || !type || !category || !date)
     return res.status(400).json({
       message: "All fields are required",
     });
 
-  const newTransaction = createNewTransaction(req.body);
+  const newTransaction = await createNewTransaction(req.body);
   res.status(201).json({
     message: "Transaction added successfully",
     data: newTransaction,
