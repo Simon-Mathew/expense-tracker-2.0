@@ -1,5 +1,5 @@
 .card {
-  padding: 20px;
+  padding: 22px;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
@@ -22,7 +22,7 @@
 .card-title {
   margin: 0;
   color: var(--text);
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 800;
   letter-spacing: 0;
 }
@@ -47,9 +47,29 @@
   color: var(--text);
 }
 
+.card > [value] {
+  display: block;
+  margin-top: 16px;
+}
+
+.card > [value] h2 {
+  color: var(--text);
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0;
+}
+
 /* Layout variants */
 .card--row .card-body {
   margin-top: 0; // header-style cards might not need body spacing
+}
+
+.card--income,
+.card--expense,
+.card--current-balance {
+  display: grid;
+  gap: 12px;
 }
 
 .card--stack .card-body {

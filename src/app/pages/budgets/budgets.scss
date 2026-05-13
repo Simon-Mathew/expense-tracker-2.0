@@ -2,16 +2,86 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  gap: 16px;
+  padding: 0 0 20px;
+}
+
+.Budgets-heading {
+  color: var(--text);
+  font-size: clamp(1.75rem, 3vw, 2.3rem);
+  font-weight: 800;
+  letter-spacing: 0;
+  margin: 0;
 }
 
 .badge {
   align-items: center;
   padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid #36353b;
-  background: #f9fafb;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
   font-size: 12px;
   font-weight: 700;
   margin-left: 5px;
+}
+
+.empty-state {
+  color: #475569;
+  font-size: 1rem;
+  margin: 0 0 18px;
+}
+
+.budget-card {
+  margin-bottom: 24px;
+}
+
+.limit-field {
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin: 0 0 12px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.limit-field span {
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.limit-field input {
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius-sm);
+  font: inherit;
+  min-height: 40px;
+  padding: 0 12px;
+  width: 160px;
+}
+
+.limit-field input:focus-visible {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.24);
+  outline: none;
+}
+
+@media (max-width: 640px) {
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .limit-field {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .limit-field input {
+    width: 100%;
+  }
 }

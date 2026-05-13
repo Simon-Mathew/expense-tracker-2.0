@@ -15,6 +15,6 @@ export class BudgetsCards {
 
   get progress() {
     if (!this.limit || this.limit === 0) return 0;
-    return Math.round((this.value / this.limit) * 100);
+    return Math.min(Math.round((this.value / this.limit) * 100), 100);
   }
 }

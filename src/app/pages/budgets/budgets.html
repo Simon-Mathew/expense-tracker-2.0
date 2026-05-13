@@ -22,12 +22,6 @@
 
   @for (budget of budgetCards(); track budget.category) {
     <div class="budget-card">
-      <app-budgets-cards
-        [title]="budget.title"
-        [value]="budget.spent"
-        [limit]="budget.limit"
-      />
-
       <label class="limit-field">
         <span>Budget limit</span>
         <input
@@ -39,6 +33,12 @@
           (change)="updateBudgetLimit(budget.category, limitInput.valueAsNumber)"
         />
       </label>
+
+      <app-budgets-cards
+        [title]="budget.title"
+        [value]="budget.spent"
+        [limit]="budget.limit"
+      />
     </div>
   } @empty {
     <p class="empty-state">No budget categories found.</p>
