@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 
 export type TransactionType = 'Income' | 'Expense';
 
-export type Category =
+export type incomeCategory = 'Salary' | 'Back Transfer' | 'Loan';
+
+export type expenseCategory =
   | 'Insurance'
   | 'Rent'
   | 'Groceries'
@@ -21,7 +23,7 @@ export interface Transaction {
   amount: number;
   type: TransactionType;
   date: string;
-  category: Category;
+  category: expenseCategory | incomeCategory;
   notes: string;
 }
 

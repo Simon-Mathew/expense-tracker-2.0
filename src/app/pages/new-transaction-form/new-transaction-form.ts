@@ -4,7 +4,7 @@ import {
   TransactionService,
   Transaction,
   TransactionType,
-  Category,
+  expenseCategory,
 } from '../../shared/services/transaction-service';
 
 @Component({
@@ -15,7 +15,7 @@ import {
 })
 export class NewTransactionForm {
   constructor(private transactionService: TransactionService) {}
-  category: Category[] = [
+  expenseCategory: expenseCategory[] = [
     'Insurance',
     'Rent',
     'Groceries',
@@ -27,6 +27,8 @@ export class NewTransactionForm {
     'Credit Card Bills',
     'Other',
   ];
+
+  incomeCategory = ['Salary', 'Back Transfer', 'Loan'];
 
   // Don't worry about "amount: null" as when user inputs value, the value gets bonded to the variable amount
   transaction: Transaction = {
