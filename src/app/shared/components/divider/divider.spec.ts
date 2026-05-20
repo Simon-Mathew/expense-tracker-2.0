@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Ddivider } from './ddivider';
+import { Divider } from './divider';
 
 describe('Ddivider', () => {
-  let component: Ddivider;
-  let fixture: ComponentFixture<Ddivider>;
+  let component: Divider;
+  let fixture: ComponentFixture<Divider>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Ddivider]
-    })
-    .compileComponents();
+      imports: [Divider],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(Ddivider);
+    fixture = TestBed.createComponent(Divider);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

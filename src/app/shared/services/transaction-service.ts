@@ -27,6 +27,9 @@ export interface Transaction {
   notes: string;
 }
 
+export type TransactionPayload = Omit<Transaction, '_id'>;
+export type TransactionUpdatePayload = Partial<TransactionPayload>;
+
 @Injectable({
   providedIn: 'root',
 })
@@ -47,13 +50,13 @@ export class TransactionService {
     );
   }
 
-  updateTransactionAmount(
+  updateTransaction(
     id: string,
-    amount: number,
+    transaction: TransactionUpdatePayload,
   ): Observable<{ message: string; data: Transaction }> {
     return this.http.patch<{ message: string; data: Transaction }>(
       `${this.apiUrl}/${id}`,
-      { amount },
+      transaction,
     );
   }
 

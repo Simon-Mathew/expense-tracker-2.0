@@ -9,14 +9,19 @@ import {
 import {
   TransactionService,
   Transaction,
+  TransactionUpdatePayload,
+  TransactionType,
+  expenseCategory,
+  incomeCategory,
 } from '../../shared/services/transaction-service';
 import { ExpenseIncomeCard } from '../../shared/components/expense-income-card/expense-income-card';
+import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 
 type TransactionFilter = 'All' | 'Income' | 'Expenses' | 'Subscription';
 
 @Component({
   selector: 'app-transaction-page',
-  imports: [ExpenseIncomeCard],
+  imports: [ExpenseIncomeCard, ReactiveFormsModule],
   templateUrl: './transaction-page.html',
   styleUrl: './transaction-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -37,6 +42,32 @@ export class TransactionPage implements OnInit {
   protected readonly deletingTransactionId = signal<string | null>(null);
   protected readonly errorMessage = signal('');
   private readonly transactions = signal<Transaction[]>([]);
+  protected readonly expenseCategories: expenseCategory[] = [
+    'Insurance',
+    'Rent',
+    'Groceries',
+    'Transport',
+    'House Bills',
+    'Creams For Medication',
+    'Subscriptions',
+    'Dinning',
+    'Credit Card Bills',
+    'Other',
+  ];
+  protected readonly incomeCategories: incomeCategory[] = [
+    'Salary',
+    'Back Transfer',
+    'Loan',
+  ];
+  protected readonly editForm = new FormGroup({
+    amount: new FormControl(0, { nonNullable: true }),
+    type: new FormControl<TransactionType>('Expense', { nonNullable: true }),
+    date: new FormControl('', { nonNullable: true }),
+    category: new FormControl<expenseCategory | incomeCategory>('Other', {
+      nonNullable: true,
+    }),
+    notes: new FormControl('', { nonNullable: true }),
+  });
 
   protected readonly filteredTransactions = computed(() => {
     const selectedFilter = this.selectedFilter();
@@ -71,6 +102,13 @@ export class TransactionPage implements OnInit {
 
   protected startEditing(transaction: Transaction): void {
     this.errorMessage.set('');
+    this.editForm.setValue({
+      amount: transaction.amount,
+      type: transaction.type,
+      date: transaction.date,
+      category: transaction.category,
+      notes: transaction.notes ?? '',
+    });
     this.editingTransactionId.set(transaction._id);
   }
 
@@ -79,9 +117,22 @@ export class TransactionPage implements OnInit {
     this.editingTransactionId.set(null);
   }
 
-  protected updateAmount(transaction: Transaction, amount: number): void {
-    if (!Number.isFinite(amount) || amount < 0) {
-      this.errorMessage.set('Enter a valid transaction amount.');
+  protected syncCategoryForType(): void {
+    const type = this.editForm.controls.type.value;
+    const category = this.editForm.controls.category.value;
+    const categories: readonly (expenseCategory | incomeCategory)[] =
+      type === 'Expense' ? this.expenseCategories : this.incomeCategories;
+
+    if (!categories.includes(category)) {
+      this.editForm.controls.category.setValue(categories[0]);
+    }
+  }
+
+  protected updateTransaction(transaction: Transaction): void {
+    const payload = this.getValidatedTransactionPayload();
+
+    if (!payload) {
+      this.errorMessage.set('Enter a valid transaction update.');
       return;
     }
 
@@ -89,7 +140,7 @@ export class TransactionPage implements OnInit {
     this.savingTransactionId.set(transaction._id);
 
     this.transactionService
-      .updateTransactionAmount(transaction._id, amount)
+      .updateTransaction(transaction._id, payload)
       .subscribe({
         next: (response) => {
           this.transactions.update((transactions) =>
@@ -131,5 +182,30 @@ export class TransactionPage implements OnInit {
     return [...transactions].sort(
       (a, b) => Date.parse(b.date) - Date.parse(a.date),
     );
+  }
+
+  private getValidatedTransactionPayload(): TransactionUpdatePayload | null {
+    const amount = Number(this.editForm.controls.amount.value);
+    const type = this.editForm.controls.type.value;
+    const date = this.editForm.controls.date.value.trim();
+    const category = this.editForm.controls.category.value;
+    const notes = this.editForm.controls.notes.value.trim();
+
+    if (!Number.isFinite(amount) || amount < 0 || !category) {
+      return null;
+    }
+
+    const payload: TransactionUpdatePayload = {
+      amount,
+      type,
+      category,
+      notes,
+    };
+
+    if (date) {
+      payload.date = date;
+    }
+
+    return payload;
   }
 }

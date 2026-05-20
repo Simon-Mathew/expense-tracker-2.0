@@ -18,6 +18,10 @@ const transactionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  notes: {
+    type: String,
+    default: "",
+  },
 });
 
 module.exports = mongoose.model("Transaction", transactionSchema);
