@@ -16,7 +16,6 @@ import { Observable } from 'rxjs';
 
 export interface PeriodicElement {
   date: string;
-  id?: number;
   amount: number;
   merchant: string;
   type: string;
@@ -30,7 +29,7 @@ export interface PeriodicElement {
   styleUrl: './table.scss',
 })
 export class Table implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['id', 'date', 'category', 'type', 'amount'];
+  displayedColumns: string[] = ['date', 'category', 'type', 'amount'];
   dataSource$!: Observable<Transaction[]>;
   isBrowser = false;
 
@@ -60,10 +59,8 @@ export class Table implements OnInit, AfterViewInit {
   updateColumns(width: number) {
     if (width <= 600) {
       this.displayedColumns = ['date', 'amount', 'category'];
-    } else if (width <= 768) {
-      this.displayedColumns = ['date', 'amount', 'category', 'type'];
     } else {
-      this.displayedColumns = ['id', 'date', 'category', 'type', 'amount'];
+      this.displayedColumns = ['date', 'category', 'type', 'amount'];
     }
   }
 }

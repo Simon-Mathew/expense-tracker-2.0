@@ -8,13 +8,13 @@ import {
   TransactionService,
   Transaction,
 } from '../../shared/services/transaction-service';
-import { Observable } from 'rxjs';
+import { Button } from '../../shared/components/button/button';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [Card, Divider, RouterLink, Table, NewTransactionForm],
-  templateUrl: './Dashboard.html',
-  styleUrls: ['./Dashboard.scss'],
+  imports: [Card, Divider, RouterLink, Table, NewTransactionForm, Button],
+  templateUrl: './dashboard.html',
+  styleUrls: ['./dashboard.scss'],
 })
 export class Dashboard implements OnInit {
   dataSource: Transaction[] = [];

@@ -27,7 +27,9 @@ body {
 
 body {
   color-scheme: light;
-  background-color: #f1f2fa;
+  background:
+    linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  color: var(--text);
   font: var(--mat-sys-body-medium);
   font-family: Roboto, "Helvetica Neue", "Arial", sans-serif;
 }
@@ -42,13 +44,19 @@ body {
   --sidebar-width: 250px;
   --topbar-height: 72px;
   --surface: #ffffff;
-  --surface-soft: #f7f9fc;
-  --border: #e8edf5;
+  --surface-soft: #f8fafc;
+  --surface-muted: #eef2f7;
+  --border: #dbe3ef;
   --text: #101828;
   --muted: #667085;
   --primary: #2452e7;
-  --primary-soft: #eaf1ff;
-  --radius-lg: 20px;
-  --radius-md: 14px;
-  --shadow-soft: 0 8px 30px rgba(16, 24, 40, 0.06);
+  --primary-hover: #1d4ed8;
+  --primary-soft: #e8f0ff;
+  --success: #087f5b;
+  --danger: #b42318;
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --shadow-soft: 0 12px 30px rgba(16, 24, 40, 0.08);
+  --shadow-subtle: 0 1px 2px rgba(16, 24, 40, 0.06);
 }

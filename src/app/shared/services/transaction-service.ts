@@ -2,14 +2,33 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export type TransactionType = 'Income' | 'Expense';
+
+export type incomeCategory = 'Salary' | 'Back Transfer' | 'Loan';
+
+export type expenseCategory =
+  | 'Insurance'
+  | 'Rent'
+  | 'Groceries'
+  | 'Transport'
+  | 'House Bills'
+  | 'Creams For Medication'
+  | 'Subscriptions'
+  | 'Dinning'
+  | 'Credit Card Bills'
+  | 'Other';
+
 export interface Transaction {
-  id?: string;
+  _id: string;
   amount: number;
-  type: string;
+  type: TransactionType;
   date: string;
-  category: string;
+  category: expenseCategory | incomeCategory;
   notes: string;
 }
+
+export type TransactionPayload = Omit<Transaction, '_id'>;
+export type TransactionUpdatePayload = Partial<TransactionPayload>;
 
 @Injectable({
   providedIn: 'root',
@@ -29,5 +48,19 @@ export class TransactionService {
       this.apiUrl,
       transaction,
     );
+  }
+
+  updateTransaction(
+    id: string,
+    transaction: TransactionUpdatePayload,
+  ): Observable<{ message: string; data: Transaction }> {
+    return this.http.patch<{ message: string; data: Transaction }>(
+      `${this.apiUrl}/${id}`,
+      transaction,
+    );
+  }
+
+  deleteTransaction(id: string): Observable<{ message: string }> {
+    return this.http.delete<{ message: string }>(`${this.apiUrl}/${id}`);
   }
 }

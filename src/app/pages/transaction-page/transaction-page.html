@@ -1,0 +1,114 @@
+<h1>Transaction History</h1>
+
+<div class="btn-category" aria-label="Filter transactions">
+  @for (filter of filters; track filter) {
+    <button
+      type="button"
+      class="filter-button"
+      [class.active]="selectedFilter() === filter"
+      [attr.aria-pressed]="selectedFilter() === filter"
+      (click)="selectFilter(filter)"
+    >
+      {{ filter }}
+    </button>
+  }
+</div>
+
+@if (errorMessage()) {
+  <p class="error-state" role="alert">{{ errorMessage() }}</p>
+}
+
+@for (transaction of filteredTransactions(); track transaction._id) {
+  <section
+    class="transaction-item"
+    [class.selected]="editingTransactionId() === transaction._id"
+  >
+    <button
+      type="button"
+      class="edit-icon-button"
+      [attr.aria-label]="'Edit ' + transaction.category + ' transaction'"
+      [attr.aria-pressed]="editingTransactionId() === transaction._id"
+      (click)="startEditing(transaction)"
+    >
+      <span class="material-icons" aria-hidden="true">edit</span>
+    </button>
+
+    <app-expense-income-card
+      [type]="transaction.type"
+      [category]="transaction.category"
+      [notes]="transaction.notes"
+      [date]="transaction.date"
+      [amount]="transaction.amount"
+    />
+
+    @if (editingTransactionId() === transaction._id) {
+      <form
+        class="transaction-edit-form"
+        [formGroup]="editForm"
+        (ngSubmit)="updateTransaction(transaction)"
+      >
+        <label class="edit-field">
+          <span>Amount</span>
+          <input type="number" min="0" step="0.01" formControlName="amount" />
+        </label>
+
+        <label class="edit-field">
+          <span>Type</span>
+          <select formControlName="type" (change)="syncCategoryForType()">
+            <option value="Income">Income</option>
+            <option value="Expense">Expense</option>
+          </select>
+        </label>
+
+        <label class="edit-field">
+          <span>Date</span>
+          <input type="date" formControlName="date" />
+        </label>
+
+        <label class="edit-field">
+          <span>Category</span>
+          <select formControlName="category">
+            @if (editForm.controls.type.value === 'Expense') {
+              @for (category of expenseCategories; track category) {
+                <option [value]="category">{{ category }}</option>
+              }
+            } @else {
+              @for (category of incomeCategories; track category) {
+                <option [value]="category">{{ category }}</option>
+              }
+            }
+          </select>
+        </label>
+
+        <label class="edit-field edit-field-wide">
+          <span>Notes</span>
+          <textarea rows="3" formControlName="notes"></textarea>
+        </label>
+
+        <div class="action-buttons">
+          <button
+            type="submit"
+            class="save-button"
+            [disabled]="savingTransactionId() === transaction._id"
+          >
+            Save
+          </button>
+          <button
+            type="button"
+            class="delete-button"
+            [disabled]="deletingTransactionId() === transaction._id"
+            (click)="deleteTransaction(transaction)"
+          >
+            <span class="material-icons" aria-hidden="true">delete</span>
+            Delete
+          </button>
+          <button type="button" class="secondary-button" (click)="cancelEditing()">
+            Cancel
+          </button>
+        </div>
+      </form>
+    }
+  </section>
+} @empty {
+  <p class="empty-state">No transactions found for this filter.</p>
+}

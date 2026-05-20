@@ -1,0 +1,36 @@
+<section class="card">
+  <!-- This is for card income -->
+  @if (type == 'Income') {
+  <div class="inner-card">
+    <div class="icon-category">
+      <app-icons class="icon" [category]="category"></app-icons>
+      <div class="transaction-copy">
+        <h2>{{category}}</h2>
+        <p>{{fiveWordsNotes(notes || '')}}</p>
+      </div>
+    </div>
+    <div class="date-amount">
+      <p class="transaction-date">{{date}}</p>
+      <h2 class="income-amount">+ ${{amount}}</h2>
+    </div>
+  </div>
+  }
+
+  <!-- This is for card expense -->
+  @else {
+  <div class="inner-card">
+    <div class="icon-category">
+      <app-icons class="icon" [category]="category"></app-icons>
+
+      <div class="transaction-copy">
+        <h2>{{category}}</h2>
+        <p>{{fiveWordsNotes(notes || '')}}</p>
+      </div>
+    </div>
+    <div class="date-amount">
+      <p class="transaction-date">{{date}}</p>
+      <h2 class="expense-amount">- $ {{amount}}</h2>
+    </div>
+  </div>
+  }
+</section>

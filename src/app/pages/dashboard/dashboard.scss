@@ -1,0 +1,68 @@
+h1 {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  letter-spacing: 0;
+}
+
+.container {
+  display: grid;
+  width: 100%;
+  margin: 0 auto;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+
+.badge {
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #36353b;
+  background: #f9fafb;
+  // color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.Dashboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+}
+
+.Dashboard-heading {
+  color: var(--text);
+  font-size: clamp(1.75rem, 3vw, 2.3rem);
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.transactions {
+  grid-column: 1 / -1;
+}
+
+.page-shell,
+.main,
+.content-inner,
+.container,
+.transactions,
+.card,
+.card-body {
+  min-width: 0;
+}
+
+@media (max-width: 860px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .Dashboard {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
